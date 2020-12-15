@@ -18,13 +18,13 @@ git clone https://github.com/nonsoo24/Afrinvest-challenge.git
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Build for development
 
 ```npm
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Build for production
 
 ```npm
 npm run build
