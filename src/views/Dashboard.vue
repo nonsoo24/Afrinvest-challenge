@@ -4,22 +4,13 @@
     <SideNavbar />
 
     <div class="content">
-      <!-- <div class="menu-icon">
-        <i class="fas fa-bars header__menu"></i>
-      </div> -->
+
+      <NavBar />
+
       <div id="feedback">
         <a href="javascript:void(0);">Feedback</a>
 
       </div>
-
-      <header class="header">
-        <div></div>
-        <div class="header__avatar">
-          <img class="header__avatar-notification" src="../assets/icons/bell-ring.svg"
-            alt="notification-icon">
-          <img src="../assets/icons/rahul.svg" alt="profile-icon">
-        </div>
-      </header>
 
       <main class="main">
         <div class="main-header">
@@ -27,9 +18,8 @@
             <h4>Welcome, {{firstName}}</h4>
             <p>Good to have you on board, get started with the actions below</p>
           </div>
-          <div class="main-header__updates">
-            <!-- <button>Invest</button> -->
-            <SaveButton><i class="fas fa-plus fa-sm"></i> Invest</SaveButton>
+          <div class="main-header__button">
+            <button class="btn-success"><i class="fas fa-plus fa-sm"></i> Invest</button>
           </div>
         </div>
 
@@ -61,7 +51,8 @@
                 <h5>Action 2: Verify your Identity</h5>
                 <p>To access the amazing investment business experience, Kindly help us to know you
                   better
-                  <span class="action-card-text">Start Now <i class="fas fa-arrow-right"></i></span>
+                  <span class="action-card-text" @click="userSetting()">Start Now <i
+                      class="fas fa-arrow-right"></i></span>
                 </p>
               </div>
             </div>
@@ -98,7 +89,7 @@
           </div>
 
 
-          <div class="card">Card</div>
+          <div class="card"></div>
         </div>
 
         <div class="transaction-block">
@@ -149,13 +140,35 @@
         </div>
 
       </main>
+      <Modal>
+        <div slot="body">
+
+          <div class="modal-body-icon">
+            <img src="../assets/icons/welcome.svg" alt="welcome-icon">
+          </div>
+
+          <div class="modal-body-content">
+            <h3>Welcome To Afrinvestor</h3>
+            <p>We are glad to know you have choosen Afrinvestor
+              as your investment platform. Kindly let us walk with
+              you as take a quick tour of the app.
+            </p>
+          </div>
+        </div>
+
+        <span slot="cancel">Let’s do this later</span>
+        <span slot="save">Show me Around</span>
+
+      </Modal>
+
     </div>
   </div>
 </template>
 
 <script>
-import SaveButton from '@/components/buttons/Save.vue';
 import SideNavbar from '@/components/navigation/SideNavBar.vue';
+import NavBar from '@/components/navigation/NavBar.vue';
+import Modal from '@/components/modal/Modal.vue';
 import axios from 'axios'
 export default {
     data() {
@@ -166,16 +179,22 @@ export default {
       }
     },
    components: {
-      SaveButton,
-      SideNavbar
+      SideNavbar,
+      NavBar,
+      Modal
     },
 
   methods: {
-
       getUserName() {
-        const userName = JSON.parse(localStorage.getItem('userData'));
-        this.firstName = userName.data.firstname
-      }
+          const userName = JSON.parse(localStorage.getItem('userData'));
+          this.firstName = userName.data.firstname
+        },
+
+        userSetting() {
+          this.$router.push({
+            path: 'settings'
+          })
+        },
 
       // async getDashboard() {
       //   const accessToken = JSON.parse(localStorage.getItem('token'));
@@ -198,16 +217,8 @@ export default {
     },
    mounted() {
     // this.getDashboard()
-    this.getUserName()
+    // this.getUserName()
   },
-  // beforeRouteEnter (to, from, next) {
-  //   const accessToken = JSON.parse(localStorage.getItem('token'));
-  //   if(accessToken != '' || accessToken != undefined) {
-  //     next()
-  //   }else{
-  //     next('/')
-  //   }
-  // }
 }
 </script>
 
@@ -215,7 +226,6 @@ export default {
   body {
     margin: 0;
     padding: 0;
-    color: #fff;
     font-family: inherit;
     box-sizing: border-box;
   }
@@ -238,23 +248,6 @@ export default {
     padding: 12px;
   }
 
-  .header {
-    grid-area: header;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #F6F6F6;
-  }
-
-  .header__search {
-    margin-left: 42px;
-  }
-
-  .header__avatar-notification {
-    margin-right: 48px;
-  }
-
 
   .sidenav__close-icon {
     position: absolute;
@@ -269,13 +262,6 @@ export default {
   .main {
     grid-area: main;
     background-color: #F6F6F6;
-  }
-
-  .main-header {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-    padding: 20px;
   }
 
   .main-overview {
@@ -391,8 +377,6 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: 90px;
-    width: 100%;
     max-width: 1050px;
     border-radius: 2px;
     margin: 20px;
@@ -451,24 +435,36 @@ export default {
     text-decoration: none;
   }
 
-  .content-tab {
-    padding: 20px;
-    color: #999999;
-    font-size: 24px;
-    cursor: pointer;
-  }
-
   .content-tab.active {
     color: #0FB36D;
   }
-
-
 
   div.content {
     margin-left: 250px;
     /* padding: 1px 16px; */
     height: 100vh;
     background-color: #F6F6F6;
+  }
+
+  .modal-body-icon {
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: #F7F4F0;
+  }
+
+  .modal-body-content h3,
+  .modal-body-content p {
+    text-align: center;
+  }
+
+
+  .modal-body-content {
+    padding: 20px 50px;
+  }
+
+  .modal-body-icon {
+    padding-top: 30px;
   }
 
   @media only screen and (min-width:320px) {
@@ -480,6 +476,7 @@ export default {
     .main-header p {
       color: #999999;
       font-size: 18px;
+      margin-top: 5px;
     }
 
     .card-portfolio {
@@ -576,4 +573,5 @@ export default {
       margin-left: 0;
     }
   }
+
 </style>

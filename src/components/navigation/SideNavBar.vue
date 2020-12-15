@@ -1,46 +1,78 @@
 <template>
   <div>
     <div class="sidebar">
-      <div class="afrinvest-logo">
-        <img src="../../assets/images/logo.png" alt="afrinvest-logo">
+      <div class="sidebar__image-block">
+        <div class="afrinvest-logo" @click="userHome()">
+          <img src="../../assets/images/logo.png" class="afrinvest-logo-image" alt="afrinvest-logo">
+        </div>
+
+        <div>
+          <!-- close button -->
+          <a href="javascript:void(0)" class="closebtn" @click="toggle()">&times;
+          </a>
+          <!-- close button -->
+        </div>
       </div>
 
-       <router-link id="home" class="nav-link" to="/" tag="li" active-class="active" exact>
+      <router-link id="home" class="nav-link" to="/dashboard" tag="li" active-class="active" exact>
         <img src="../../assets/icons/home.svg" alt="home-icon">
         <span>Home</span>
-       </router-link>
+      </router-link>
 
-<router-link id="invest" class="nav-link" to="/invest" tag="li" active-class="active" exact>
+      <router-link id="invest" class="nav-link" to="/invest" tag="li" active-class="active" exact>
         <img src="../../assets/icons/investment.svg" alt="invest-icon">
         <span>Invest</span>
-</router-link>
+      </router-link>
 
       <router-link id="wallet" class="nav-link" to="/wallet" tag="li" active-class="active" exact>
         <img src="../../assets/icons/wallet.svg" alt="wallet-icon">
         <span>Wallet</span>
       </router-link>
 
-      <router-link id="settings" class="nav-link" to="/settings" tag="li" active-class="active" exact>
+      <router-link id="settings" class="nav-link" to="/settings" tag="li" active-class="active"
+        exact>
         <img src="../../assets/icons/settings.svg" alt="settings-icon">
         <span>Settings</span>
       </router-link>
 
-      <router-link id="tell-a-friend" class="nav-link" to="/tell-friend" tag="li" active-class="active" exact>
+      <router-link id="tell-a-friend" class="nav-link" to="/tell-friend" tag="li"
+        active-class="active" exact>
         <img src="" alt="">
         <!-- <img src="../assets/icons/settings.svg" alt="friend-icon"> -->
         <span>Tell a friend</span>
       </router-link>
 
-      <button class="sidebar-help">
-        <i class="far fa-question-circle"></i>
-        Get Help
-      </button>
+      <div>
+        <button class="sidebar-help text-success">
+          Get Help
+        </button>
+        <span class="question-icon">
+          <i class="far fa-question-circle text-success"></i>
+        </span>
+      </div>
     </div>
 
   </div>
 </template>
 
-<style scoped>
+<script>
+import {eventBus} from '../../main'
+export default {
+  methods: {
+    userHome() {
+      this.$router.push({
+        path: 'dashboard'
+      })
+    },
+
+     toggle(){
+       eventBus.closeBtn();
+    }
+  }
+}
+</script>
+
+<style>
 
    .sidebar span {
      font-size: 18px;
@@ -51,35 +83,12 @@
      margin-top: .3rem;
    }
 
-   .sidenav__list-item:hover {
-     background-color: rgba(255, 255, 255, 0.2);
-     cursor: pointer;
-   }
-
    .sidebar-text {
      margin-top: 200px;
    }
 
    .afrinvest-logo {
      margin: 10px auto;
-   }
-
-   .sidebar {
-     margin: 0;
-     padding: 0 30px;
-     width: 250px;
-     background-color: #1F1F1F;
-     position: fixed;
-     height: 100%;
-     overflow: auto;
-   }
-
-
-   .sidebar li {
-     display: block;
-     color: #FFFFFF;
-     padding: 16px 0;
-     text-decoration: none;
      cursor: pointer;
    }
 
@@ -97,41 +106,286 @@
      cursor: pointer;
    }
 
-   .sidebar-help {
-     box-sizing: border-box;
-     padding: 8px 45px;
-     border: 1px solid #258C60;
-     border-radius: 19px;
-     background-color: rgba(37, 140, 96, 0.15);
-     color: #258C60;
-     font-size: 14px;
-     cursor: pointer;
-     justify-content: space-between;
-   }
-
    #tell-a-friend {
      margin-top: 150px;
    }
 
-   @media screen and (max-width: 400px) {
-     .sidebar li {
-       text-align: center;
-       float: none;
-     }
+   .sidebar__image-block {
+     display: flex;
    }
 
+   @media only screen and (min-width:320px) {
 
-   @media screen and (max-width: 700px) {
      .sidebar {
-       width: 100%;
-       height: auto;
-       position: relative;
+       margin: 0;
+       padding: 0 30px;
+       width: 200px;
+       background-color: #1F1F1F;
+       position: fixed;
+       height: 100%;
+       overflow: auto;
+       display: none;
      }
 
      .sidebar li {
-       float: left;
+       display: block;
+       color: #FFFFFF;
+       padding: 16px 0;
+       text-decoration: none;
+       cursor: pointer;
+     }
+
+     .sidebar-help {
+       box-sizing: border-box;
+       padding: 8px 45px;
+       border: 1px solid #258C60;
+       border-radius: 19px;
+       background-color: rgba(37, 140, 96, 0.15);
+       font-size: 12px;
+       cursor: pointer;
+       justify-content: space-between;
+     }
+
+     .question-icon {
+       float: right;
+       margin-left: 0px;
+       margin-top: -28px;
+       position: relative;
+       z-index: 2;
+       margin-right: 112px;
+       cursor: pointer;
+     }
+
+     .fa-plus {
+       display: none;
      }
    }
 
+
+   /* Extra small devices (phones, 600px and down) */
+   @media only screen and (max-width: 600px) {
+
+     .sidebar {
+       margin: 0;
+       padding: 0 30px;
+       width: 200px;
+       background-color: #1F1F1F;
+       position: fixed;
+       height: 100%;
+       overflow: auto;
+       display: none;
+     }
+
+     .sidebar li {
+       display: block;
+       color: #FFFFFF;
+       padding: 16px 0;
+       text-decoration: none;
+       cursor: pointer;
+     }
+
+     .afrinvest-logo-image {
+       width: 120px;
+     }
+
+     .sidebar-help {
+       box-sizing: border-box;
+       padding: 8px 45px;
+       border: 1px solid #258C60;
+       border-radius: 19px;
+       background-color: rgba(37, 140, 96, 0.15);
+       font-size: 12px;
+       cursor: pointer;
+       justify-content: space-between;
+     }
+
+     .question-icon {
+       float: right;
+       margin-left: 0px;
+       margin-top: -28px;
+       position: relative;
+       z-index: 2;
+       margin-right: 112px;
+       cursor: pointer;
+     }
+
+     .closebtn {
+       font-size: 2rem;
+       display: block;
+       color: #ffff;
+       text-decoration: none;
+     }
+
+      .fa-plus {
+       display: none;
+     }
+   }
+
+   /* Small devices (portrait tablets and large phones, 600px and up) */
+   @media only screen and (min-width: 600px) {
+
+     .sidebar {
+       margin: 0;
+       padding: 0 30px;
+       width: 250px;
+       background-color: #1F1F1F;
+       position: fixed;
+       height: 100%;
+       overflow: auto;
+       display: block;
+     }
+
+
+     .sidebar li {
+       display: block;
+       color: #FFFFFF;
+       padding: 16px 0;
+       text-decoration: none;
+       cursor: pointer;
+     }
+
+     .sidebar-help {
+       box-sizing: border-box;
+       padding: 8px 45px;
+       border: 1px solid #258C60;
+       border-radius: 19px;
+       background-color: rgba(37, 140, 96, 0.15);
+       font-size: 12px;
+       cursor: pointer;
+       justify-content: space-between;
+     }
+
+     .question-icon {
+       float: right;
+       margin-left: 0px;
+       margin-top: -28px;
+       position: relative;
+       z-index: 2;
+       margin-right: 112px;
+       cursor: pointer;
+     }
+
+     .closebtn {
+       font-size: 2rem;
+       display: block;
+       color: #ffff;
+       text-decoration: none;
+     }
+
+      .fa-plus {
+       display: none;
+     }
+   }
+
+   /* Medium devices (landscape tablets, 768px and up) */
+   @media only screen and (min-width: 768px) {
+
+     .sidebar {
+       margin: 0;
+       padding: 0 30px;
+       width: 250px;
+       background-color: #1F1F1F;
+       position: fixed;
+       height: 100%;
+       overflow: auto;
+       display: block;
+     }
+
+
+     .sidebar li {
+       display: block;
+       color: #FFFFFF;
+       padding: 16px 0;
+       text-decoration: none;
+       cursor: pointer;
+     }
+
+     .sidebar-help {
+       box-sizing: border-box;
+       padding: 8px 45px;
+       border: 1px solid #258C60;
+       border-radius: 19px;
+       background-color: rgba(37, 140, 96, 0.15);
+       font-size: 12px;
+       cursor: pointer;
+       justify-content: space-between;
+     }
+
+     .question-icon {
+       float: right;
+       margin-left: 0px;
+       margin-top: -28px;
+       position: relative;
+       z-index: 2;
+       margin-right: 112px;
+       cursor: pointer;
+     }
+
+     .closebtn {
+       font-size: 2rem;
+       display: none;
+       color: #ffff;
+       text-decoration: none;
+     }
+
+     .fa-plus {
+       display: block;
+     }
+   }
+
+   /* Large devices (laptops/desktops, 992px and up) */
+   @media only screen and (min-width: 992px) {
+     .sidebar {
+       margin: 0;
+       padding: 0 30px;
+       width: 250px;
+       background-color: #1F1F1F;
+       position: fixed;
+       height: 100%;
+       overflow: auto;
+       display: block;
+     }
+
+     .sidebar li {
+       display: block;
+       color: #FFFFFF;
+       padding: 16px 0;
+       text-decoration: none;
+       cursor: pointer;
+     }
+
+     .sidebar-help {
+       box-sizing: border-box;
+       padding: 8px 45px;
+       border: 1px solid #258C60;
+       border-radius: 19px;
+       background-color: rgba(37, 140, 96, 0.15);
+       font-size: 14px;
+       cursor: pointer;
+       justify-content: space-between;
+     }
+
+     .question-icon {
+       float: right;
+       margin-left: 0px;
+       margin-top: -28px;
+       position: relative;
+       z-index: 2;
+       margin-right: 160px;
+       cursor: pointer;
+     }
+
+     .closebtn {
+       font-size: 2rem;
+       display: none;
+       color: #ffff;
+       text-decoration: none;
+     }
+
+      .fa-plus {
+       display: block;
+     }
+
+   }
 
 </style>

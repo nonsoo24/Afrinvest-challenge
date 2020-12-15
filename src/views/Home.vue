@@ -1,37 +1,15 @@
 <template>
   <div class="home">
-<!-- <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6 w-full"> -->
-
-      <!-- logo -->
-          <!-- <div class="flex items-center flex-shrink-0 text-white title">
-            <svg @click="toggle()" class="hambuger cursor-pointer fill-current h-8 w-8 mr-2" viewBox="0 0 100 80"
-              width="25" height="25" fill="#fff" stroke="#fff">
-              <rect width="100" height="10" rx="8"></rect>
-              <rect y="30" width="100" height="10" rx="8"></rect>
-              <rect y="60" width="100" height="10" rx="8"></rect>
-            </svg>
-          </div>
-
-          <div class="w-auto block flex-grow sm:flex sm:items-center lg:flex lg:items-center ml-8">
-            <div class="text-sm lg:flex-grow text-white">
-              <router-link to="/">
-                <span class="font-semibold text-2xl tracking-tight logo-text text-white">Catholic
-                  Hymns</span>
-              </router-link>
-            </div>
-          </div>
-    </nav> -->
-
 
     <div class="sidebar">
-  <div class="afrinvest-logo">
-    <img src="../assets/images/logo.png" alt="logo" />
-  </div>
-  <div class="sticky-image-wrapper">
-    <img src="../assets/images/image2.png" alt="image1" v-if="activeMode">
-    <img src="../assets/images/image1.png" alt="image2" v-if="activeMode == false">
-  </div>
-</div>
+      <div class="afrinvest-logo">
+        <img src="../assets/images/logo.png" alt="logo" />
+      </div>
+      <!-- <div class="sticky-image-wrapper">
+        <img src="../assets/images/image2.png" alt="image1" v-if="activeMode">
+        <img src="../assets/images/image1.png" alt="image2" v-if="activeMode == false">
+      </div> -->
+    </div>
 
 
 
@@ -40,162 +18,183 @@
       <div class="sign-wrapper">
 
         <!-- header Content -->
-        <div class="nav-wrapper">
-          <div></div>
-          <div class="nav-wrapper-login">
-             <p> {{title}} </p>
-              <button class="btn-form" @click="toggleLogin()"  v-if="activeMode">{{loginText}}</button>
-              <button class="btn-form" @click="toggleSignUp()" v-if="activeMode == false">{{loginText}}</button>
+        <header class="header">
+          <div class="header__content">
+            <div class="header__content-title">
+              {{title}}
+            </div>
+            <div class="header__content-button">
+              <button class="btn-form" @click="toggleLogin()"
+                v-if="activeMode">{{loginText}}</button>
+              <button class="btn-form" @click="toggleSignUp()"
+                v-if="activeMode == false">{{loginText}}
+              </button>
+            </div>
+
           </div>
-        </div>
+        </header>
         <!-- header Content -->
 
+<!-- <div class="sticky-image-wrapper">
+        <img src="../assets/images/image2.png" alt="image1" v-if="activeMode" width="431" height="579">
+        <img src="../assets/images/image1.png" alt="image2" v-if="activeMode == false">
+      </div> -->
+
         <!-- sign up Content -->
-          <div class="sign-up">
-            <form @submit.prevent="submitForm">
-              <fieldset>
-                <div class="page-header">
-                  <h4>{{header}}</h4>
-                  <p v-if="activeMode == false">Welcome back, enter your details below</p>
-                </div>
+        <div class="sign-up">
+          <form @submit.prevent="submitForm">
+            <fieldset>
+              <div class="page-header">
+                <h4>{{header}}</h4>
+                <p v-if="activeMode == false">Welcome back, enter your details below</p>
+              </div>
 
-                <p>{{message}}</p>
-                <!-- user email -->
-                <div v-if="activeMode">
-                  <label for="email">Email</label>
-                  <input id="email" type="text" class="form-control"
-                    placeholder="e.g michealolawale@gmail.com" v-model="account.email">
-                </div>
-                <!-- user email -->
+              <p>{{message}}</p>
+              <!-- user email -->
+              <div v-if="activeMode">
+                <label for="email">Email</label>
+                <input id="email" type="text" class="form-control"
+                  placeholder="e.g michealolawale@gmail.com" v-model="account.email">
+              </div>
+              <!-- user email -->
 
-                <!-- username -->
+              <!-- username -->
+              <div>
+                <label for="username">{{username}}</label>
+                <input id="username" type="text" class="form-control" placeholder="e.g mikeola"
+                  v-model="account.username">
+              </div>
+              <!-- username -->
+
+              <!-- user fullname -->
+              <div class="fullname-block" v-if="activeMode">
                 <div>
-                  <label for="username">{{username}}</label>
-                  <input id="username" type="text" class="form-control" placeholder="e.g mikeola"
-                    v-model="account.username">
+                  <label for="first-name">First name</label>
+                  <input id="first-name" type="text" class="form-control" placeholder="e.g Mayowa"
+                    v-model="account.firstname">
                 </div>
-                <!-- username -->
 
-                <!-- user fullname -->
-                <div class="fullname-block" v-if="activeMode">
-                  <div>
-                    <label for="first-name">First name</label>
-                    <input id="first-name" type="text" class="form-control" placeholder="e.g Mayowa"
-                      v-model="account.firstname">
-                  </div>
-
-                  <div>
-                    <label for="last-name">Last name</label>
-                    <input id="last-name" type="text" class="form-control" placeholder="Olawale"
-                      v-model="account.lastname">
-                  </div>
-                </div>
-                <!-- user fullname -->
-
-                <!-- user password -->
                 <div>
-                  <label for="password">Password</label>
-                  <input id="password" type="password" class="form-control"
-                    placeholder="At least 8 characters" v-model="account.password">
+                  <label for="last-name">Last name</label>
+                  <input id="last-name" type="text" class="form-control" placeholder="Olawale"
+                    v-model="account.lastname">
                 </div>
-                <!-- user password -->
+              </div>
+              <!-- user fullname -->
 
-                <!-- Remember me/forgot password -->
-                <div class="forgot-password" v-if="activeMode == false">
-                  <div class="remember-block">
-                    <label class="container">Remember me
-                      <input type="checkbox">
-                      <span class="checkmark"></span>
-                    </label>
-                  </div>
-
-                  <div>
-                    <a href="">I forgot my password</a>
-                  </div>
+              <!-- user password -->
+              <div>
+                <label for="password">Password</label>
+                <div>
+                  <input id="password" :type="passwordType" class="form-control"
+                  placeholder="At least 8 characters" v-model="account.password">
+                    <span class="toggle-password" @click="togglePassword" v-if="activeMode"> <img src="../assets/icons/eye.svg" alt="password-icon"> </span>
                 </div>
-                <!-- Remember me/forgot password -->
+              </div>
+              <!-- user password -->
 
-                <!-- action button -->
-                <button type="submit" class="btn-submit" @click.prevent="submitForm()"> {{buttonText}}
-                </button>
-                <!-- action button -->
+              <!-- Remember me/forgot password -->
+              <div class="forgot-password" v-if="activeMode == false">
+                <div class="remember-block">
+                  <label class="container">Remember me
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
 
-                <p v-if="activeMode">By creating, you agree to Afrinvestor
-                  <span class="term-of-service">Terms of service</span> and
-                  <span class="term-of-service">Privacy policy</span>
-                </p>
-              </fieldset>
-            </form>
-          </div>
+                <div>
+                  <a href="javascript:void(0);" class="forgot-password-link">I forgot my
+                    password</a>
+                </div>
+              </div>
+              <!-- Remember me/forgot password -->
+
+              <!-- action button -->
+              <button type="submit" class="btn-submit" @click.prevent="submitForm()"> {{buttonText}}
+              </button>
+              <!-- action button -->
+
+              <p v-if="activeMode">By creating, you agree to Afrinvestor
+                <span class="term-of-service">Terms of service</span> and
+                <span class="term-of-service">Privacy policy</span>
+              </p>
+            </fieldset>
+          </form>
+        </div>
       </div>
       <!-- sign up Content -->
     </div>
+
+      <div class="sticky-image-wrapper">
+        <img src="../assets/images/image2.png" alt="image1" v-if="activeMode" >
+        <img src="../assets/images/image1.png" alt="image2" v-if="activeMode == false">
+      </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import LoginButton from '@/components/buttons/Login.vue';
 import axios from 'axios'
 
 export default {
-  // name: 'Home',
-  // components: {
-  //   LoginButton,
-  // },
   data() {
-    return {
-      disabled: true,
-      submitStatus: null,
-      loader: `<i class="fa fa-spinner fa-spin fa-2x">`,
-      message: '',
-      buttonText: 'Create My Free Account',
-      loginText: 'Login',
-      title: 'Already have an account?',
-      header: 'Gain financial freedom by simple investing',
-      activeMode: true,
-      username: 'Username',
-      account: {
-        firstname: '',
-        lastname: '',
-        username: '',
-        email: '',
-        password: ''
+      return {
+        passwordType: 'password',
+        password: '',
+        message: '',
+        buttonText: 'Create My Free Account',
+        loginText: 'Login',
+        title: 'Already have an account?',
+        header: 'Gain financial freedom by simply investing',
+        activeMode: true,
+        username: 'Username',
+        account: {
+          firstname: '',
+          lastname: '',
+          username: '',
+          email: '',
+          password: ''
+        }
       }
-    }
-  },
-  methods: {
-    userDashboard() {
-      this.$router.push({
-        path: 'dashboard'
-      })
-
     },
-    toggleLogin() {
-      this.title = 'Don’t have an account yet?';
-      this.buttonText = 'Login';
-      this.header = 'Hello!';
-      this.username = 'Email/Username';
-      this.loginText = 'Login';
-      this.activeMode = false;
-    },
+    methods: {
+      userDashboard() {
+        this.$router.push({
+          path: 'dashboard'
+        })
 
-    toggleSignUp() {
-      this.title = 'Already have an account?';
-      this.buttonText = 'Create My Free Account';
-      this.header = 'Gain financial freedom by simply investing';
-      this.username = 'Username';
-      this.loginText = 'Create My Free Account';
-      this.activeMode = true
-    },
+      },
+      toggleLogin() {
+        debugger
+        this.title = 'Don’t have an account yet?';
+        this.buttonText = 'Login';
+        this.header = 'Hello!';
+        this.username = 'Email/Username';
+        this.loginText = 'Create Account';
+        this.activeMode = false;
+      },
 
+      toggleSignUp() {
+        debugger
+        this.title = 'Already have an account?';
+        this.buttonText = 'Create My Free Account';
+        this.header = 'Gain financial freedom by simply investing';
+        this.username = 'Username';
+        this.loginText = 'Login';
+        this.activeMode = true
+      },
 
-    submitForm() {
-      let loginButton = document.querySelector('.btn-submit');
-      loginButton.innerHTML = `<i class="fa fa-spinner fa-spin fa-2x">`
-      loginButton.disabled = true;
+      togglePassword() {
+        this.passwordType = this.passwordType === 'password' ? 'text' : 'password'
+      },
 
-      if (this.activeMode) {
+      createAccount() {
+        let loginButton = document.querySelector('.btn-submit');
+        loginButton.innerHTML = `<i class="fa fa-spinner fa-spin fa-2x">`
+        loginButton.disabled = true;
+        const {
+          $toast
+        } = this;
         axios.post("/user/register", JSON.stringify(this.account), {
             headers: {
               'content-type': 'application/json',
@@ -205,25 +204,53 @@ export default {
           .then(response => {
             if (response.data.status) {
               this.message = response.data.message
+              $toast.success(this.message, '', {
+                position: 'topRight',
+                timeout: 5000
+              })
               this.toggleLogin()
+              loginButton.innerHTML = 'Login'
               loginButton.disabled = false;
 
               localStorage.setItem('userData', JSON.stringify(response.data))
 
             } else {
+              loginButton.innerHTML = 'Create My Free Account'
+              loginButton.disabled = false;
               this.message = response.data.message
+
+              $toast.error(this.message, '', {
+                position: 'topRight',
+                timeout: 5000
+              })
             }
           })
           .catch(error => {
-            console.error(error)
-          })
+            loginButton.innerHTML = 'Create My Free Account'
+            loginButton.disabled = false;
 
-      } else {
+            $toast.error(error, '', {
+              position: 'topRight',
+              timeout: 5000
+            })
+            // console.error(error)
+          })
+      },
+
+      login() {
+        let loginButton = document.querySelector('.btn-submit');
+        loginButton.innerHTML = `<i class="fa fa-spinner fa-spin fa-2x">`
+        loginButton.disabled = true;
+        const {
+          $toast
+        } = this;
         const username = this.account.username
         const password = this.account.password
 
-        axios.post("/user/login", JSON.stringify({username, password}),
-        {
+        axios.post("/user/login", JSON.stringify({
+            username,
+            password
+          }), {
             headers: {
               'content-type': 'application/json',
               'Accept': 'application/json'
@@ -232,44 +259,50 @@ export default {
           .then(response => {
             if (response.data.status) {
               localStorage.setItem('token', JSON.stringify(response.data.data['access_token']))
-              this.message = response.data.message
+
               this.userDashboard()
 
               loginButton.innerHTML = 'Login';
               loginButton.disabled = false;
+
             } else {
               this.message = response.data.message
+              loginButton.innerHTML = 'Login'
+              loginButton.disabled = false;
+
+              $toast.error(this.message, '', {
+                position: 'topRight',
+                timeout: 5000
+              })
             }
           })
           .catch(error => {
-            console.error(error)
+            loginButton.innerHTML = 'Login'
+            loginButton.disabled = false;
+
+            $toast.error(error, '', {
+              position: 'topRight',
+              timeout: 5000
+            })
+            // console.error(error)
           })
-      }
+
+      },
+
+
+      submitForm() {
+        if (this.activeMode) {
+          this.createAccount()
+        } else {
+          this.login()
+        }
+      },
     },
-  },
-};
+  };
 
 </script>
 
 <style scoped>
-  .home-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-auto-rows: minmax(200px, auto);
-  }
-
-  .image-block {
-    height: 1080px;
-    width: 376px;
-    background-color: #1F1F1F;
-    /* position: fixed; */
-  }
-
-  .wrapper {
-    /* display: flex; */
-    /* justify-content: center; */
-    margin: 0 auto;
-  }
 
   .nav-wrapper {
     display: flex;
@@ -286,20 +319,21 @@ export default {
   }
 
   .sticky-image-wrapper {
-    /* position: fixed; */
-    bottom: 0;
+    /* position: absolute; */
+    /* margin-top: 130px; */
+    /* bottom: 0; */
     width: 100%;
-    margin-top: 266px;
+    /* margin-top: 266px; */
   }
 
   .sticky-image-wrapper img {
-    display: table;
-    position: relative;
-  }
-
-  .sign-up {
-    margin: 0 auto;
-    width: 500px;
+    position: absolute;
+    left: 0px;
+    top: 140px;
+    bottom: 0;
+    z-index: 1000;
+    height: 100%;
+    /* width: 400px; */
   }
 
   label {
@@ -362,6 +396,7 @@ export default {
     cursor: pointer;
     color: #258C60;
     background: #fff;
+    padding: 5px 50px;
   }
 
   .navbar-collapse {
@@ -374,10 +409,10 @@ export default {
   }
 
   fieldset p:last-child {
-    margin-top: 28.2px;
+    margin: 10px 0 40px 0;
     text-align: center;
     font-size: 14px;
-    color: #999999;
+    color: #0E0E0E;
   }
 
   .page-header {
@@ -423,6 +458,11 @@ export default {
   .forgot-password {
     font-size: 14px;
     color: #0E0E0E;
+  }
+
+  .forgot-password-link {
+    color: #0E0E0E;
+    cursor: pointer;
   }
 
   /* checkbox  */
@@ -491,24 +531,38 @@ export default {
 
 
   /* sidenavbar */
-  .sidebar {
-    margin: 0;
-    padding: 0 30px;
-    width: 376px;
-    background-color: #1F1F1F;
-    ;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-  }
 
-  div.content {
-    margin-left: 376px;
-    padding: 1px 16px;
-    height: 1000px;
-  }
+/* .header {
+  position: fixed;
+  justify-content: flex-end;
+} */
+.header__content {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+}
 
-  @media screen and (max-width: 700px) {
+.header__content-title {
+  margin-right: 20px;
+  margin-top: 10px;
+
+}
+.header__content-button {
+  margin-right: 10px;
+
+}
+
+.toggle-password {
+  float: right;
+  margin-left: -25px;
+  margin-top: -72px;
+  position: relative;
+  z-index: 2;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+  /* @media screen and (max-width: 700px) {
     .sidebar {
       width: 100%;
       height: auto;
@@ -518,6 +572,6 @@ export default {
     div.content {
       margin-left: 0;
     }
-  }
+  } */
 
 </style>
