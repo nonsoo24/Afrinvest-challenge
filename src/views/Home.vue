@@ -13,7 +13,7 @@
 
 
 
-    <div class="content">
+    <div class="home-content">
       <!-- sign up Content -->
       <div class="sign-wrapper">
 

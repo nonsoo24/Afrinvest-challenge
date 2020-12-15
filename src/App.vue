@@ -41,7 +41,8 @@
 
 html,
 body {
-  max-width: 100%;
+   max-width: 100vw;
+  height: 100vh;
   overflow-x: hidden;
   font-family: "Aperu Light", Helvetica, Arial, sans-serif;
 }
@@ -85,6 +86,10 @@ body {
 .is-open {
   display: block !important;
 }
+
+ .content-tab.active {
+    color: #0FB36D;
+  }
 
 /* @media only screen and (min-width:320px) { */
 /* .btn-success {
@@ -146,7 +151,7 @@ body {
     display: none;
   }
 
-  div.content {
+  .home-content {
     padding: 1px 16px;
     width: 100%;
     position: relative;
@@ -195,6 +200,11 @@ body {
   .btn-close {
     margin: 0 0 4px 0;
   }
+  div.content {
+    margin-left: 0;
+    height: 100vh;
+    background-color: #F6F6F6;
+  }
 }
 
 
@@ -240,7 +250,7 @@ body {
     display: none;
   }
 
-  div.content {
+  .home-content {
     padding: 1px 16px;
     width: 100%;
     position: relative;
@@ -290,6 +300,11 @@ body {
   .btn-close {
     margin: 0 0 4px 0;
   }
+  div.content {
+    margin-left: 0;
+    height: 100vh;
+    background-color: #F6F6F6;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -334,7 +349,7 @@ body {
     display: block;
   }
 
-  div.content {
+  .home-content {
     padding: 1px 16px;
     width: 100%;
     position: relative;
@@ -383,6 +398,11 @@ body {
   .btn-close {
     margin-right: 24px;
   }
+  div.content {
+    margin-left: 200px;
+    height: 100vh;
+    background-color: #F6F6F6;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -427,7 +447,7 @@ body {
     display: block;
   }
 
-  div.content {
+  .home-content {
     padding: 1px 16px;
     width: 100%;
     position: relative;
@@ -477,6 +497,11 @@ body {
   .btn-close {
     margin-right: 24px;
   }
+  div.content {
+    margin-left: 250px;
+    height: 100vh;
+    background-color: #F6F6F6;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -521,7 +546,7 @@ body {
     display: block;
   }
 
-  div.content {
+  .home-content {
     padding: 1px 16px;
     width: 100%;
     position: relative;
@@ -574,5 +599,19 @@ body {
   .btn-close {
     margin-right: 24px;
   }
+
+  div.content {
+    margin-left: 250px;
+    height: 100vh;
+    background-color: #F6F6F6;
+  }
 }
+
+/* @media screen and (max-width: 700px) {
+    div.content {
+      margin-left: 0;
+    }
+  } */
+
+
 </style>

@@ -435,17 +435,6 @@ export default {
     text-decoration: none;
   }
 
-  .content-tab.active {
-    color: #0FB36D;
-  }
-
-  div.content {
-    margin-left: 250px;
-    /* padding: 1px 16px; */
-    height: 100vh;
-    background-color: #F6F6F6;
-  }
-
   .modal-body-icon {
     display: flex;
     justify-content: center;
@@ -566,12 +555,6 @@ export default {
       color: #419AFA;
     }
 
-  }
-
-  @media screen and (max-width: 700px) {
-    div.content {
-      margin-left: 0;
-    }
   }
 
 </style>
