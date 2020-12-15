@@ -87,10 +87,6 @@ export default {
       this.isVisible = false
     }
   },
-
-   mounted() {
-    // this.activateTour()
-  },
 }
 </script>
 

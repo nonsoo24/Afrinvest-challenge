@@ -192,9 +192,7 @@ export default {
         let loginButton = document.querySelector('.btn-submit');
         loginButton.innerHTML = `<i class="fa fa-spinner fa-spin fa-2x">`
         loginButton.disabled = true;
-        const {
-          $toast
-        } = this;
+        const { $toast } = this;
         axios.post("/user/register", JSON.stringify(this.account), {
             headers: {
               'content-type': 'application/json',
@@ -308,7 +306,7 @@ export default {
     display: flex;
     flex-direction: row;
     flex-direction: wrap;
-    margin-top: 10px;
+    margin-top: 0.625rem;
     justify-content: space-between;
   }
 
@@ -328,8 +326,8 @@ export default {
 
   .sticky-image-wrapper img {
     position: absolute;
-    left: 0px;
-    top: 140px;
+    left: 0;
+    top: 8.75rem;
     bottom: 0;
     z-index: 1000;
     height: 100%;
@@ -352,9 +350,9 @@ export default {
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #DCD9D9;
-    height: 50px;
-    margin-bottom: 40px;
+    border: 0.0625rem solid #DCD9D9;
+    height: 3.125rem;
+    margin-bottom: 2.5rem;
 
   }
 
@@ -365,38 +363,38 @@ export default {
   h4 {
     color: #0E0E0E;
     font-family: inherit;
-    font-size: 36px;
+    font-size: 2.25rem;
     letter-spacing: 0;
-    line-height: 50px;
+    line-height: 3.125rem;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 6.25rem;
   }
 
   .fullname-block {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 30px;
+    grid-gap: 1.875rem;
   }
 
   .afrinvest-logo {
-    margin: 10px auto;
+    margin: 0.625rem auto;
   }
 
   .btn-form {
-    height: 45px;
+    height: 2.8125rem;
     width: 100%;
-    border: 1px solid #DCD9D9;
-    border-radius: 2px;
+    border: 0.0625rem solid #DCD9D9;
+    border-radius: 0.125rem;
     box-sizing: border-box;
     font-family: inherit;
-    font-size: 18px;
+    font-size: 1.125rem;
     letter-spacing: 0;
-    line-height: 21px;
+    line-height: 1.3125rem;
     text-align: center;
     cursor: pointer;
     color: #258C60;
     background: #fff;
-    padding: 5px 50px;
+    padding: 0.3125rem 3.125rem;
   }
 
   .navbar-collapse {
@@ -409,25 +407,24 @@ export default {
   }
 
   fieldset p:last-child {
-    margin: 10px 0 40px 0;
+    margin: 0.625rem 0 2.5rem 0;
     text-align: center;
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #0E0E0E;
   }
 
   .page-header {
-    margin-bottom: 50px;
+    margin-bottom: 3.125rem;
   }
-
 
   .btn-submit {
     width: 100%;
-    height: 50px;
-    border-radius: 2px;
+    height: 3.125rem;
+    border-radius: 0.125rem;
     background-color: #258C60;
     border: none;
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 1.125rem;
+    line-height: 1.3125rem;
     text-align: center;
     letter-spacing: 0;
     cursor: pointer;
@@ -437,11 +434,10 @@ export default {
   .btn-submit:after {
     content: url('../assets/icons/arrow-right.svg');
     position: relative;
-    left: 120px;
+    left: 1.25rem;
   }
 
   .btn-submit:disabled {
-    /* background-color:#ddd; */
     cursor: not-allowed;
     opacity: .65;
   }
@@ -452,11 +448,11 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
   }
 
   .forgot-password {
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #0E0E0E;
   }
 
@@ -469,10 +465,10 @@ export default {
   .container {
     display: block;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+    padding-left: 2.1875rem;
+    margin-bottom: 0.75rem;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #0E0E0E;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -492,8 +488,8 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
+    height: 1.5625rem;
+    width: 1.5625rem;
     background-color: #eee;
   }
 
@@ -516,12 +512,12 @@ export default {
   }
 
   .container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
+    left: 0.5625rem;
+    top: 0.3125rem;
+    width: 0.3125rem;
+    height: 0.625rem;
     border: solid white;
-    border-width: 0 3px 3px 0;
+    border-width: 0 0.1875rem 0.1875rem 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -539,26 +535,26 @@ export default {
 .header__content {
   display: flex;
   justify-content: flex-end;
-  padding-top: 10px;
+  padding-top: 0.625rem;
 }
 
 .header__content-title {
-  margin-right: 20px;
-  margin-top: 10px;
+  margin-right: 1.25rem;
+  margin-top: 0.625rem;
 
 }
 .header__content-button {
-  margin-right: 10px;
+  margin-right: 0.625rem;
 
 }
 
 .toggle-password {
   float: right;
-  margin-left: -25px;
-  margin-top: -72px;
+  margin-left: -1.5625rem;
+  margin-top: -4.5rem;
   position: relative;
   z-index: 2;
-  margin-right: 10px;
+  margin-right: 0.625rem;
   cursor: pointer;
 }
 

@@ -237,25 +237,25 @@ export default {
   .menu-icon {
     position: fixed;
     display: flex;
-    top: 5px;
-    left: 10px;
+    top: 0.3125rem;
+    left: 0.625rem;
     align-items: center;
     justify-content: center;
     background-color: #DADAE3;
     border-radius: 50%;
     z-index: 1;
     cursor: pointer;
-    padding: 12px;
+    padding: 0.75rem;
   }
 
 
   .sidenav__close-icon {
     position: absolute;
     visibility: visible;
-    top: 8px;
-    right: 12px;
+    top: 0.5rem;
+    right: 0.75rem;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: #ddd;
   }
 
@@ -266,20 +266,20 @@ export default {
 
   .main-overview {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-    grid-auto-rows: 106px;
-    grid-gap: 20px;
-    margin: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(16.5625rem, 1fr));
+    grid-auto-rows: 6.625rem;
+    grid-gap: 1.25rem;
+    margin: 1.25rem;
   }
 
   .overviewcard {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 17px;
+    padding: 1.0625rem;
     background-color: #FFFFFF;
     border-left: .4rem solid #419AFA;
-    border-radius: 2px 0 0 2px;
+    border-radius: 0.125rem 0 0 0.125rem;
   }
 
   .action-card {
@@ -288,20 +288,20 @@ export default {
   }
 
   .action-card>div:first-child {
-    margin-right: 22px;
+    margin-right: 1.375rem;
   }
 
   .card {
     width: 100%;
     background-color: #FFFFFF;
-    padding: 24px;
+    padding: 1.5rem;
     box-sizing: border-box;
   }
 
   .card-portfolio-box {
-    border: 1px solid #DBDDE1;
-    border-radius: 2px;
-    padding: 24px;
+    border: 0.0625rem solid #DBDDE1;
+    border-radius: 0.125rem;
+    padding: 1.5rem;
   }
 
   /* .card-portfolio-box:after {
@@ -311,20 +311,20 @@ export default {
   } */
 
   .card-currency {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .card__title-currency {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 
   .card-portfolio-box p:last-child {
-    font-size: 30px;
-    margin-top: 8px;
+    font-size: 1.875rem;
+    margin-top: 0.5rem;
   }
 
   .card__portofolio-value {
-    font-size: 48px;
+    font-size: 3rem;
   }
 
   .action-card-text {
@@ -336,8 +336,8 @@ export default {
   .card__portfolio-title {
     color: #999999;
     font-family: inherit;
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 1.125rem;
+    line-height: 1.3125rem;
   }
 
   .transaction-block {
@@ -345,24 +345,24 @@ export default {
   }
 
   .transaction-block__watchlist {
-    margin: 80px auto;
-    padding-bottom: 100px;
+    margin: 5rem 0 0 auto;
+    padding-bottom: 6.25rem;
   }
 
   .transaction-block__recent-transaction {
-    padding-bottom: 100px;
+    padding-bottom: 6.25rem;
   }
 
   .transaction-block__watchlist h4 {
-    margin-top: 37px;
-    font-size: 30px;
+    margin-top: 2.3125rem;
+    font-size: 1.875rem;
     color: #0E0E0E;
     text-align: center;
   }
 
   .transaction-block__watchlist p {
-    margin-top: 25.8px;
-    font-size: 16px;
+    margin-top: 1.6125rem;
+    font-size: 1rem;
     color: #999999;
     text-align: center;
   }
@@ -377,41 +377,41 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-width: 1050px;
-    border-radius: 2px;
-    margin: 20px;
-    padding: 24px;
+    max-width: 65.625rem;
+    border-radius: 0.125rem;
+    margin: 1.25rem;
+    padding: 1.5rem;
     background-color: #FFFFFF;
   }
 
   .recent-transaction-details h5 {
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #0E0E0E;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
 
   }
 
   .recent-transaction-details p {
-    font-size: 16px;
+    font-size: 1rem;
     color: #999999;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
   }
 
   .recent-transaction-summary h5 {
-    font-size: 18px;
-    /* margin-bottom: 10px; */
+    font-size: 1.125rem;
+    /* margin-bottom: 0.625rem; */
 
   }
 
   .recent-transaction-summary p {
     color: #0E0E0E;
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 0.625rem;
   }
 
   #feedback {
-    height: 0px;
-    width: 66px;
+    height: 0;
+    width: 4.125rem;
     position: fixed;
     right: 0;
     top: 50%;
@@ -425,20 +425,20 @@ export default {
   #feedback a {
     display: block;
     background: #1F1F1F;
-    height: 52px;
-    padding-top: 10px;
-    width: 118px;
+    height: 3.25rem;
+    padding-top: 0.625rem;
+    width: 7.375rem;
     text-align: center;
     color: #FFFFFF;
-    border-radius: 4px 0 0 4px;
-    font-size: 18px;
+    border-radius: 0.25rem 0 0 0.25rem;
+    font-size: 1.125rem;
     text-decoration: none;
   }
 
   .modal-body-icon {
     display: flex;
     justify-content: center;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     background-color: #F7F4F0;
   }
 
@@ -449,109 +449,109 @@ export default {
 
 
   .modal-body-content {
-    padding: 20px 50px;
+    padding: 1.25rem 3.125rem;
   }
 
   .modal-body-icon {
-    padding-top: 30px;
+    padding-top: 1.875rem;
   }
 
-  @media only screen and (min-width:320px) {
+  @media only screen and (min-width:20rem) {
     .main-header h4 {
       color: #0E0E0E;
-      font-size: 28px;
+      font-size: 1.75rem;
     }
 
     .main-header p {
       color: #999999;
-      font-size: 18px;
-      margin-top: 5px;
+      font-size: 1.125rem;
+      margin-top: 0.3125rem;
     }
 
     .card-portfolio {
       display: grid;
       grid-template-columns: 1fr;
-      grid-auto-rows: minmax(102px, auto);
-      grid-gap: 24px;
-      margin-top: 36px;
+      grid-auto-rows: minmax(6.375rem, auto);
+      grid-gap: 1.5rem;
+      margin-top: 2.25rem;
     }
 
     .main-cards {
       display: grid;
       grid-template-columns: 1fr;
-      grid-auto-rows: 528px;
-      grid-gap: 20px;
-      margin: 20px;
+      grid-auto-rows: 33rem;
+      grid-gap: 1.25rem;
+      margin: 1.25rem;
     }
 
     .overviewcard {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 4px;
+      padding: 0.25rem;
       background-color: #FFFFFF;
     }
 
     .action-card p {
-      margin-top: 8.2px;
-      font-size: 10px;
-      letter-spacing: 0.8px;
+      margin-top: 0.5125rem;
+      font-size: 0.625rem;
+      letter-spacing: 0.05rem;
       align-items: center;
     }
 
     .action-card h5 {
-      font-size: 14px;
+      font-size: 0.875rem;
       color: #419AFA;
     }
   }
 
   /* Extra small devices (phones, 600px and down) */
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 37.5rem) {
 
     .main-header h4 {
       color: #0E0E0E;
-      font-size: 36px;
+      font-size: 2.25rem;
     }
 
     .main-header p {
       color: #999999;
-      font-size: 24px;
+      font-size: 1.5rem;
     }
 
     .card-portfolio {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-auto-rows: minmax(102px, auto);
-      grid-gap: 34px;
-      margin-top: 46px;
+      grid-auto-rows: minmax(6.375rem, auto);
+      grid-gap: 2.125rem;
+      margin-top: 2.875rem;
 
     }
 
     .main-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-auto-rows: 426px;
-      grid-gap: 20px;
-      margin: 20px;
+      grid-auto-rows: 26.625rem;
+      grid-gap: 1.25rem;
+      margin: 1.25rem;
     }
 
     .overviewcard {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 17px;
+      padding: 1.0625rem;
       background-color: #FFFFFF;
     }
 
     .action-card p {
-      margin-top: 8.2px;
-      font-size: 14px;
-      letter-spacing: 0.8px;
+      margin-top: 0.5125rem;
+      font-size: 0.875rem;
+      letter-spacing: 0.05rem;
       align-items: center;
     }
 
     .action-card h5 {
-      font-size: 18px;
+      font-size: 1.125rem;
       color: #419AFA;
     }
 

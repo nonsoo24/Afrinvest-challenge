@@ -133,58 +133,164 @@
 <script>
 import SideNavbar from '@/components/navigation/SideNavBar.vue';
 import NavBar from '@/components/navigation/NavBar.vue';
+import axios from 'axios'
 export default {
   data() {
-      return {
-        tabs: ['Profile', 'Bank Details', 'Password & Security', 'Support', 'Account Type',
-          'Glossary'
-        ],
-        activeTab: 'Profile',
-        firstName: ''
+    return {
+      tabs: ['Profile', 'Bank Details', 'Password & Security', 'Support', 'Account Type',
+        'Glossary'
+      ],
+      activeTab: 'Profile',
+      editProfile: {
+        basicInfo: {
+          middlename: '',
+          phone_number: "09863526723",
+          gender: '',
+          mother_maiden_name: '',
+          date_of_birth: ''
+
+        },
+        userAddress: {
+          address: '',
+          city: '',
+          state_of_origin: '',
+          country: '',
+          nationality: ''
+        },
+        nextOfKin: {
+          full_name: '',
+          email: '',
+          phone_number: '',
+          residential_address: '',
+          relationship: ''
+
+        },
+
+        bankDetails: {
+          full_name: '',
+          email: '',
+          phone_number: '',
+          residential_address: '',
+          relationship: ''
+        },
+        documents: {
+          passport: '',
+          proof_of_identity: '',
+          utility_bill: '',
+          signature: ''
+
+
+        }
       }
+    }
+  },
+  methods: {
+    editUserProfile() {
+      let url, userData;
+
+      switch (currentTab) {
+        case 1:
+          url = 'basic'
+          userData = this.editProfile.basicInfo
+          break;
+        case 2:
+          url = 'address'
+          userData = this.editProfile.userAddress
+          break;
+        case 3:
+          url = 'kin'
+          userData = this.editProfile.nextOfKin
+          break;
+        case 4:
+          url = 'bank'
+          userData = this.editProfile.bankDetails
+          break;
+        default:
+          url = 'document'
+          userData = this.editProfile.documents
+
+      }
+
+      const {  $toast } = this;
+      axios.post(`/user/${url}`, JSON.stringify(userData), {
+          headers: {
+            'content-type': 'application/json',
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.data.status) {
+
+            this.message = response.data.message
+            $toast.success(this.message, '', {
+              position: 'topRight',
+              timeout: 5000
+            })
+
+          } else {
+            this.message = response.data.message
+
+            $toast.error(this.message, '', {
+              position: 'topRight',
+              timeout: 5000
+            })
+          }
+        })
+        .catch(error => {
+          loginButton.innerHTML = 'Create My Free Account'
+          loginButton.disabled = false;
+
+          $toast.error(error, '', {
+            position: 'topRight',
+            timeout: 5000
+          })
+          // console.error(error)
+        })
+
+    }
     },
     components: {
       SideNavbar,
       NavBar
     }
-  }
+    }
 </script>
 
 <style scoped>
 h3 {
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-size: 2.25rem;
+  margin-bottom: 1.25rem;
 }
 
 .settings__block {
   width: 100%;
   background-color: #FFFFFF;
-  padding: 30px 0;
+  padding: 1.875rem 0;
   box-sizing: border-box;
 }
 
 .content {
-  padding: 40px;
+  padding: 2.5rem;
 }
 
 .content-tab {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .settings__block-navtabs {
-  border-bottom: 1px solid #DBDDE1;
+  border-bottom: 0.0625rem solid #DBDDE1;
 }
 
 .settings__block-navtabs.active {
-  border-bottom: 2px solid #0FB36D;
+  border-bottom: 0.125rem solid #0FB36D;
 }
 
 .settings__block-wrapper {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  grid-column-gap: 20px;
+  grid-column-gap: 1.25rem;
   justify-content: space-between;
-  padding: 40px 20px 0px 20px;
+  padding: 2.5rem 1.25rem 0 1.25rem;
 }
 
 .settings__block-button {
@@ -194,26 +300,26 @@ h3 {
 .settings__block-basic {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-column-gap: 20px;
-  margin-top: 40px;
+  grid-column-gap: 1.25rem;
+  margin-top: 2.5rem;
 }
 
 .settings__block-basic-items {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-column-gap: 20px;
-  margin-top: 20px;
+  grid-column-gap: 1.25rem;
+  margin-top: 1.25rem;
 }
 
 .settings__block-basic-title {
-  border-right: 1px solid #DBDDE1;
+  border-right: 0.0625rem solid #DBDDE1;
 }
 
 .profile-picture,
 .settings__block-basic-label p,
 .settings__block-basic-name p {
-  padding-bottom: 20px;
-  font-size: 16px;
+  padding-bottom: 1.25rem;
+  font-size: 1rem;
 }
 
 .settings__block-basic-label p,
@@ -229,10 +335,10 @@ span {
 
 h5 {
   text-align: right;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 img {
-  margin-bottom: 18px
+  margin-bottom: 1.125rem
 }
 </style>

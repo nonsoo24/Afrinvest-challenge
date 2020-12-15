@@ -36,7 +36,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Aperu Light", Helvetica, Arial, sans-serif;
-  /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; */
 }
 
 html,
@@ -91,22 +90,71 @@ body {
     color: #0FB36D;
   }
 
-/* @media only screen and (min-width:320px) { */
-/* .btn-success {
-    text-align: center;
-    border-radius: 2px;
-    background-color: #258C60;
-    border: none;
-    font-size: 12px;
-    line-height: 21px;
-    text-align: center;
-    letter-spacing: 0;
-    cursor: pointer;
-    color: #fff;
-    padding: 11px 26px;
-  } */
-/* } */
 
+.v-step__header {
+    margin: -1rem -1rem .5rem;
+    padding: .5rem;
+    background-color: #fff !important;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    color: #0E0E0E !important;
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    text-align: left !important;
+}
+
+.v-step[x-placement^="right"] {
+  margin-left: 28.5rem !important;
+}
+
+.v-step {
+  position: absolute;
+will-change: transform;
+top: 2px;
+left: 324px;
+transform: translate3d(-100px, 40px, 0px);
+color: #000 !important;
+background: #fff  !important;
+text-align: left !important;
+width: 100% !important;
+max-width: 500px !important;
+height: 35% !important;
+padding: 30px !important;
+}
+
+.v-step__button {
+    background: transparent;
+    border: .05rem solid #979797  !important;
+    color: #258C60 !important;
+    margin-top: 30px !important;
+}
+
+.v-step__buttons {
+display: flex !important;
+justify-content: space-between !important;
+
+}
+
+.v-step__button-previous, .v-step__button-next, .v-step__button-stop {
+    border-radius: 2px !important;
+    background-color: #258C60 !important;
+    color: #FFFFFF !important;
+    font-size: 18px !important;
+    padding: 11px 20px !important;
+    text-align: center !important;
+    height: unset !important;
+}
+.v-step__button-skip {
+    font-size: 18px !important;
+    padding: 11px 20px !important;
+    text-align: center !important;
+    height: unset !important;
+
+}
+.v-step__content > div {
+  color: #999999 !important;
+  font-size: 21px !important;
+}
 
 
 
