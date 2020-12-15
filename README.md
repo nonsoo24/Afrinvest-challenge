@@ -1,6 +1,6 @@
-# Afrinvest fFrontend Developer Challenge
+# Afrinvest Frontend Developer Challenge
 
-This is a Frontend Developer challenge for Afrinvest. In this challenge I was expected to convert a UI/UX mock-up from their product design team to clean source code.
+This is a Frontend Developer Challenge for Afrinvest. In this challenge I was expected to convert a UI/UX mock-up from their product design team to clean source code.
 
 Click to [here](https://afrinvest-challenge.netlify.app/) to view this project.
 
@@ -46,6 +46,8 @@ npm run build
 [Vue-tour](https://github.com/pulsardev/vue-tour)
 
 [Afrinvest Design Team](https://henry186360.invisionapp.com/console/share/2P1RQ2A1EU/495394872/play)
+
+[Afrinvest API](https://documenter.getpostman.com/view/1185261/TVev44yu)
 
 [VueJs Guide](https://vuejs.org/v2/guide/)
 
