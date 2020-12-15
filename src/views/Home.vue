@@ -79,11 +79,13 @@
                 <label for="password">Password</label>
                 <div>
                   <input id="password" :type="passwordType" class="form-control"
-                  placeholder="At least 8 characters" v-model="account.password">
-                    <span class="toggle-password" @click="togglePassword" v-if="activeMode"> <img src="../assets/icons/eye.svg" alt="password-icon"> </span>
+                    placeholder="At least 8 characters" v-model="account.password">
+                  <span class="toggle-password" @click="togglePassword" v-if="activeMode"> <img
+                      src="../assets/icons/eye.svg" alt="password-icon"> </span>
                 </div>
               </div>
               <!-- user password -->
+
 
               <!-- Remember me/forgot password -->
               <div class="forgot-password" v-if="activeMode == false">
@@ -102,8 +104,11 @@
               <!-- Remember me/forgot password -->
 
               <!-- action button -->
-              <button type="submit" class="btn-submit" @click.prevent="submitForm()"> {{buttonText}}
-                <span class="btn-arrow"><img src="../assets/icons/arrow-right.svg" alt=""></span>
+              <button type="submit" class="btn-submit" @click.prevent="submitForm()">
+                {{buttonText}}
+                <span class="btn-arrow">
+                  <img src="../assets/icons/arrow-right.svg" alt="">
+                </span>
               </button>
               <!-- action button -->
 
@@ -117,10 +122,13 @@
       </div>
       <!-- sign up Content -->
     </div>
-      <div class="sticky-image-wrapper">
-        <img src="../assets/images/image2.png" alt="image1" v-if="activeMode" >
-        <img src="../assets/images/image1.png" alt="image2" v-if="activeMode == false">
-      </div>
+
+    <!-- Images -->
+    <div class="sticky-image-wrapper">
+      <img src="../assets/images/image2.png" alt="image1" v-if="activeMode">
+      <img src="../assets/images/image1.png" alt="image2" v-if="activeMode == false">
+    </div>
+    <!-- Images -->
   </div>
 </template>
 
@@ -232,9 +240,7 @@ export default {
         let loginButton = document.querySelector('.btn-submit');
         loginButton.innerHTML = `<i class="fa fa-spinner fa-spin fa-2x">`
         loginButton.disabled = true;
-        const {
-          $toast
-        } = this;
+        const { $toast } = this;
         const username = this.account.username
         const password = this.account.password
 
@@ -294,18 +300,6 @@ export default {
 </script>
 
 <style scoped>
-
-  /* .sticky-image-wrapper img { */
-    /* position: absolute;
-    left: 0;
-    top: 8.10rem;
-    margin-left: -500px;
-    bottom: 0; */
-    /* z-index: 1000; */
-    /* height: 80%; */
-    /* width: 400px; */
-  /* } */
-
 
   label {
     margin-bottom: .5rem;
@@ -496,52 +490,37 @@ export default {
 
   /* sidenavbar */
 
-/* .header {
-  position: fixed;
-  justify-content: flex-end;
-} */
-.header__content {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 0.625rem;
-}
+  .header__content {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0.625rem;
+  }
 
-.header__content-title {
-  margin-right: 1.25rem;
-  margin-top: 0.625rem;
+  .header__content-title {
+    margin-right: 1.25rem;
+    margin-top: 0.625rem;
 
-}
-.header__content-button {
-  margin-right: 0.625rem;
+  }
 
-}
+  .header__content-button {
+    margin-right: 0.625rem;
 
-.toggle-password {
-  float: right;
-  margin: -4.5rem 0.625rem 0 -1.5625rem;
-  position: relative;
-  z-index: 2;
-  cursor: pointer;
-}
+  }
 
-.btn-arrow {
+  .toggle-password {
     float: right;
- margin: 0 1.625rem 0 -6.562rem;
-  position: relative;
-  z-index: 2;
-  cursor: pointer;
-}
+    margin: -4.5rem 0.625rem 0 -1.5625rem;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+  }
 
-  /* @media screen and (max-width: 700px) {
-    .sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
-    }
-
-    div.content {
-      margin-left: 0;
-    }
-  } */
+  .btn-arrow {
+    float: right;
+    margin: 0 1.625rem 0 -6.562rem;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+  }
 
 </style>

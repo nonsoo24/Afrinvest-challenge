@@ -7,11 +7,13 @@
 
       <NavBar />
 
+      <!-- Feedback -->
       <div id="feedback">
         <a href="javascript:void(0);">Feedback</a>
-
       </div>
+      <!-- Feedback -->
 
+      <!-- Dashboard contents -->
       <main class="main">
         <div class="main-header">
           <div class="main-header__heading">
@@ -140,6 +142,9 @@
         </div>
 
       </main>
+      <!-- Dashboard contents -->
+
+      <!-- Modal contents -->
       <Modal>
         <div slot="body">
 
@@ -160,7 +165,7 @@
         <span slot="save">Show me Around</span>
 
       </Modal>
-
+      <!-- Modal contents -->
     </div>
   </div>
 </template>
@@ -171,53 +176,53 @@ import NavBar from '@/components/navigation/NavBar.vue';
 import Modal from '@/components/modal/Modal.vue';
 import axios from 'axios'
 export default {
-    data() {
-      return {
-        tabs: ['Watchlist', 'Recent Transaction'],
-        activeTab: 'Watchlist',
-        firstName: ''
-      }
-    },
-   components: {
-      SideNavbar,
-      NavBar,
-      Modal
-    },
+  data() {
+    return {
+      tabs: ['Watchlist', 'Recent Transaction'],
+      activeTab: 'Watchlist',
+      firstName: ''
+    }
+  },
+  components: {
+    SideNavbar,
+    NavBar,
+    Modal
+  },
 
   methods: {
-      getUserName() {
-          const userName = JSON.parse(localStorage.getItem('userData'));
-          this.firstName = userName.data.firstname
-        },
-
-        userSetting() {
-          this.$router.push({
-            path: 'settings'
-          })
-        },
-
-      // async getDashboard() {
-      //   const accessToken = JSON.parse(localStorage.getItem('token'));
-      //   axios.get("/user/dashboard", {
-      //       headers: {
-      //         'content-type': 'application/json',
-      //         'Accept': 'application/json',
-      //         'Authorization': `Bearer ${accessToken}`
-      //       }
-      //     })
-      //     .then(response => {
-      //       console.log('message', response)
-      //     })
-      //     .catch(error => {
-      //       console.error(error)
-      //     })
-
-
-      // }
+    getUserName() {
+      const userName = JSON.parse(localStorage.getItem('userData'));
+      this.firstName = userName.data.firstname
     },
-   mounted() {
+
+    userSetting() {
+      this.$router.push({
+        path: 'settings'
+      })
+    },
+
+    // async getDashboard() {
+    //   const accessToken = JSON.parse(localStorage.getItem('token'));
+    //   axios.get("/user/dashboard", {
+    //       headers: {
+    //         'content-type': 'application/json',
+    //         'Accept': 'application/json',
+    //         'Authorization': `Bearer ${accessToken}`
+    //       }
+    //     })
+    //     .then(response => {
+    //       console.log('message', response)
+    //     })
+    //     .catch(error => {
+    //       console.error(error)
+    //     })
+
+
+    // }
+  },
+  mounted() {
     // this.getDashboard()
-    // this.getUserName()
+    this.getUserName()
   },
 }
 </script>

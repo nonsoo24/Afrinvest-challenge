@@ -1,27 +1,27 @@
 <template>
   <div>
-      <!-- <div class="menu-icon">
+    <!-- <div class="menu-icon">
         <i class="fas fa-bars header__menu"></i>
       </div> -->
 
-     <header class="header">
-        <div>
-          <!-- hamburger icon -->
-          <svg @click="toggle()" class="hambuger" viewBox="0 0 100 80"
-              width="25" height="25" fill="#000" stroke="#000">
-              <rect width="100" height="10" rx="8"></rect>
-              <rect y="30" width="100" height="10" rx="8"></rect>
-              <rect y="60" width="100" height="10" rx="8"></rect>
-            </svg>
-            <!-- hamburger icon -->
+    <header class="header">
+      <div>
+        <!-- hamburger icon -->
+        <svg @click="toggle()" class="hambuger" viewBox="0 0 100 80" width="25" height="25"
+          fill="#000" stroke="#000">
+          <rect width="100" height="10" rx="8"></rect>
+          <rect y="30" width="100" height="10" rx="8"></rect>
+          <rect y="60" width="100" height="10" rx="8"></rect>
+        </svg>
+        <!-- hamburger icon -->
 
-        </div>
-        <div class="header__avatar">
-          <img class="header__avatar-notification" src="../../assets/icons/bell-ring.svg"
-            alt="notification-icon">
-          <img src="../../assets/icons/rahul.svg" alt="profile-icon">
-        </div>
-      </header>
+      </div>
+      <div class="header__avatar">
+        <img class="header__avatar-notification" src="../../assets/icons/bell-ring.svg"
+          alt="notification-icon">
+        <img src="../../assets/icons/rahul.svg" alt="profile-icon">
+      </div>
+    </header>
 
   </div>
 </template>
@@ -67,14 +67,14 @@ export default {
 
 <style scoped>
    .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #F6F6F6;
-  }
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 1.25rem;
+     background-color: #F6F6F6;
+   }
 
-  .header__avatar-notification {
-    margin-right: 48px;
-  }
+   .header__avatar-notification {
+     margin-right: 3rem;
+   }
 </style>

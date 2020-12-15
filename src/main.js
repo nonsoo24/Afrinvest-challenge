@@ -14,7 +14,7 @@ axios.interceptors.response.use((response) => response);
 
 export const eventBus = new Vue({
   methods: {
-    closeBtn(){
+    closeBtn() {
       this.$emit('close');
     }
   }

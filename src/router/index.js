@@ -8,8 +8,7 @@ require('vue-tour/dist/vue-tour.css')
 Vue.use(VueRouter);
 Vue.use(VueTour)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'Home',
     component: Home,
@@ -20,53 +19,53 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Dashboard.vue'),
-    beforeEnter (to, from, next) {
+    component: () => import( /* webpackChunkName: "about" */ '../views/Dashboard.vue'),
+    beforeEnter(to, from, next) {
       const accessToken = JSON.parse(window.localStorage.getItem('token'));
-     if(accessToken !== null) {
-       next()
-     }else{
-       next('/')
-     }
+      if (accessToken !== null) {
+        next()
+      } else {
+        next('/')
+      }
     }
   },
   {
     path: '/invest',
     name: 'Invest',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Invest.vue'),
-    beforeEnter (to, from, next) {
+    component: () => import( /* webpackChunkName: "about" */ '../views/Invest.vue'),
+    beforeEnter(to, from, next) {
       const accessToken = JSON.parse(window.localStorage.getItem('token'));
-     if(accessToken !== null) {
-       next()
-     }else{
-       next('/')
-     }
+      if (accessToken !== null) {
+        next()
+      } else {
+        next('/')
+      }
     }
   },
   {
     path: '/settings',
     name: 'Settings',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Settings.vue'),
-    beforeEnter (to, from, next) {
+    component: () => import( /* webpackChunkName: "about" */ '../views/Settings.vue'),
+    beforeEnter(to, from, next) {
       const accessToken = JSON.parse(window.localStorage.getItem('token'));
-     if(accessToken !== null) {
-       next()
-     }else{
-       next('/')
-     }
+      if (accessToken !== null) {
+        next()
+      } else {
+        next('/')
+      }
     }
   },
   {
     path: '/wallet',
     name: 'Wallet',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Wallet.vue'),
-    beforeEnter (to, from, next) {
+    component: () => import( /* webpackChunkName: "about" */ '../views/Wallet.vue'),
+    beforeEnter(to, from, next) {
       const accessToken = JSON.parse(window.localStorage.getItem('token'));
-     if(accessToken !== null) {
-       next()
-     }else{
-       next('/')
-     }
+      if (accessToken !== null) {
+        next()
+      } else {
+        next('/')
+      }
     }
   },
 ];

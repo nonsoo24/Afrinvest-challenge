@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Modal -->
     <div class="modal-overlay" id="modal-overlay" v-if="isVisible">
 
       <div class="modal" id="modal">
@@ -9,31 +10,33 @@
           <slot name="body"></slot>
 
           <div class="modal-button">
-          <button @click="toggleModal()" class="btn-close">
-            <slot name="cancel"></slot>
-          </button>
+            <button @click="toggleModal()" class="btn-close">
+              <slot name="cancel"></slot>
+            </button>
 
-          <button class="btn-success" @click="activateTour()">
-            <slot name="save"></slot>
-          </button>
-        </div>
+            <button class="btn-success" @click="activateTour()">
+              <slot name="save"></slot>
+            </button>
+          </div>
 
         </div>
       </div>
     </div>
+    <!-- Modal -->
 
-     <v-tour name="myTour" :steps="steps"></v-tour>
+    <!-- vue-tour -->
+    <v-tour name="myTour" :steps="steps"></v-tour>
+    <!-- vue-tour -->
   </div>
 </template>
 
 <script>
 export default {
   name: 'my-tour',
-  data() {
-    return {
-      isVisible: true,
-        steps: [
-          {
+    data() {
+      return {
+        isVisible: true,
+        steps: [{
             target: '#home',
             header: {
               title: 'This is your home',
@@ -50,13 +53,13 @@ export default {
               title: 'Investment',
             },
             content: `Get an overview insight into investments`,
-             params: {
+            params: {
               placement: 'left'
             }
           },
           {
             target: '#wallet',
-             header: {
+            header: {
               title: 'Wallet',
             },
             content: `Get an overview insight into wallet`,
@@ -64,9 +67,9 @@ export default {
               placement: 'left'
             }
           },
-           {
+          {
             target: '#tell-a-friend',
-             header: {
+            header: {
               title: 'Tell a friend',
             },
             content: `Tell a friend about Afrinvest`,
@@ -75,19 +78,19 @@ export default {
             }
           }
         ]
-    }
-  },
+      }
+    },
 
-  methods: {
-     toggleModal() {
-          this.isVisible = false;
-     },
-     activateTour() {
-      this.$tours['myTour'].start()
-      this.isVisible = false
-    }
-  },
-}
+    methods: {
+      toggleModal() {
+        this.isVisible = false;
+      },
+      activateTour() {
+        this.$tours['myTour'].start()
+        this.isVisible = false
+      }
+    },
+  }
 </script>
 
 
@@ -105,6 +108,7 @@ export default {
   z-index: 50;
   background: rgba(0, 0, 0, 0.6);
 }
+
 .modal-body {
   position: absolute;
   top: 0;
@@ -115,14 +119,14 @@ export default {
 }
 
 body {
-  background-color:#556;
+  background-color: #556;
   background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
-  linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
-  linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
-  linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
-  linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a),
-  linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
-  background-size:80px 140px;
+    linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+    linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+    linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+    linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a),
+    linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
+  background-size: 80px 140px;
   background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
 }
 

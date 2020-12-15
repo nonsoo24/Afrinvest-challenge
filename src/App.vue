@@ -238,7 +238,6 @@ body {
 }
 
 
-
 /* Extra small devices (phones, 37.5rem and down) */
 @media only screen and (max-width: 37.5rem) {
   .content-tab {
