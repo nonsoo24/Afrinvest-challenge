@@ -12,7 +12,7 @@ Click to [here](https://afrinvest-challenge.netlify.app/) to view this project.
 git clone https://github.com/nonsoo24/Afrinvest-challenge.git
 ```
 
-- Run npm install to install all dependencies needed to run the project
+- Run the command below to install all dependencies needed to run the project
 
 ```npm
 npm install
