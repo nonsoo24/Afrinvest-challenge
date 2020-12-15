@@ -41,7 +41,7 @@ npm run build
 ## Credits
 
 
-[A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)]]
+[A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 [Vue-tour](https://github.com/pulsardev/vue-tour)
 
