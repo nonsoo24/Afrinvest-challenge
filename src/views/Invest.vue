@@ -2,6 +2,10 @@
   <div>
     <SideNavbar />
     <NavBar />
+
+     <div class="content">
+
+    </div>
   </div>
 </template>
 

@@ -8,12 +8,13 @@
       <div class="settings__block">
         <div class="settings__block-header">
           <!-- nav tab -->
-          <div class="settings__block-navtabs" :class="{ active: tab === activeTab }">
+          <div class="settings__block-navtabs">
             <span class="content-tab" :class="{ active: tab === activeTab }"
               v-for="(tab, tabIndex) in tabs" :key="`selected-tab-${tabIndex}`" v-text="tab"
               @click="activeTab = tab" />
           </div>
           <!-- nav tab -->
+
           <!-- profile tab -->
 
           <div class="settings__block-wrapper" v-if="activeTab === 'Profile'">

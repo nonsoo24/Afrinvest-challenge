@@ -5,10 +5,6 @@
       <div class="afrinvest-logo">
         <img src="../assets/images/logo.png" alt="logo" />
       </div>
-      <!-- <div class="sticky-image-wrapper">
-        <img src="../assets/images/image2.png" alt="image1" v-if="activeMode">
-        <img src="../assets/images/image1.png" alt="image2" v-if="activeMode == false">
-      </div> -->
     </div>
 
 
@@ -35,10 +31,6 @@
         </header>
         <!-- header Content -->
 
-<!-- <div class="sticky-image-wrapper">
-        <img src="../assets/images/image2.png" alt="image1" v-if="activeMode" width="431" height="579">
-        <img src="../assets/images/image1.png" alt="image2" v-if="activeMode == false">
-      </div> -->
 
         <!-- sign up Content -->
         <div class="sign-up">
@@ -111,6 +103,7 @@
 
               <!-- action button -->
               <button type="submit" class="btn-submit" @click.prevent="submitForm()"> {{buttonText}}
+                <span class="btn-arrow"><img src="../assets/icons/arrow-right.svg" alt=""></span>
               </button>
               <!-- action button -->
 
@@ -124,7 +117,6 @@
       </div>
       <!-- sign up Content -->
     </div>
-
       <div class="sticky-image-wrapper">
         <img src="../assets/images/image2.png" alt="image1" v-if="activeMode" >
         <img src="../assets/images/image1.png" alt="image2" v-if="activeMode == false">
@@ -302,37 +294,17 @@ export default {
 
 <style scoped>
 
-  .nav-wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-direction: wrap;
-    margin-top: 0.625rem;
-    justify-content: space-between;
-  }
-
-  .nav-wrapper-login {
-    display: flex;
-    flex-direction: row;
-    flex-direction: wrap;
-  }
-
-  .sticky-image-wrapper {
-    /* position: absolute; */
-    /* margin-top: 130px; */
-    /* bottom: 0; */
-    width: 100%;
-    /* margin-top: 266px; */
-  }
-
-  .sticky-image-wrapper img {
-    position: absolute;
+  /* .sticky-image-wrapper img { */
+    /* position: absolute;
     left: 0;
-    top: 8.75rem;
-    bottom: 0;
-    z-index: 1000;
-    height: 100%;
+    top: 8.10rem;
+    margin-left: -500px;
+    bottom: 0; */
+    /* z-index: 1000; */
+    /* height: 80%; */
     /* width: 400px; */
-  }
+  /* } */
+
 
   label {
     margin-bottom: .5rem;
@@ -397,11 +369,6 @@ export default {
     padding: 0.3125rem 3.125rem;
   }
 
-  .navbar-collapse {
-    display: inline-block;
-    /* flex-direction: row; */
-  }
-
   .term-of-service {
     color: #258C60;
   }
@@ -431,11 +398,11 @@ export default {
     color: #fff;
   }
 
-  .btn-submit:after {
+  /* .btn-submit:after {
     content: url('../assets/icons/arrow-right.svg');
     position: relative;
     left: 1.25rem;
-  }
+  } */
 
   .btn-submit:disabled {
     cursor: not-allowed;
@@ -550,11 +517,17 @@ export default {
 
 .toggle-password {
   float: right;
-  margin-left: -1.5625rem;
-  margin-top: -4.5rem;
+  margin: -4.5rem 0.625rem 0 -1.5625rem;
   position: relative;
   z-index: 2;
-  margin-right: 0.625rem;
+  cursor: pointer;
+}
+
+.btn-arrow {
+    float: right;
+ margin: 0 1.625rem 0 -6.562rem;
+  position: relative;
+  z-index: 2;
   cursor: pointer;
 }
 
