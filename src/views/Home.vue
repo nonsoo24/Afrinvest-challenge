@@ -216,10 +216,11 @@ export default {
             }
           })
           .catch(error => {
+            this.message = error
             loginButton.innerHTML = 'Create My Free Account'
             loginButton.disabled = false;
 
-            $toast.error(error, '', {
+            $toast.error(this.message, '', {
               position: 'topRight',
               timeout: 5000
             })
@@ -269,8 +270,8 @@ export default {
           .catch(error => {
             loginButton.innerHTML = 'Login'
             loginButton.disabled = false;
-
-            $toast.error(error, '', {
+            this.message = error
+            $toast.error(this.message, '', {
               position: 'topRight',
               timeout: 5000
             })
