@@ -141,6 +141,10 @@
           </div>
         </div>
 
+          <div class="transaction__view-more">
+              <button class="btn-view-more">View More</button>
+          </div>
+
       </main>
       <!-- Dashboard contents -->
 
@@ -354,9 +358,9 @@ export default {
     padding-bottom: 6.25rem;
   }
 
-  .transaction-block__recent-transaction {
+  /* .transaction-block__recent-transaction {
     padding-bottom: 6.25rem;
-  }
+  } */
 
   .transaction-block__watchlist h4 {
     margin-top: 2.3125rem;
@@ -459,6 +463,21 @@ export default {
 
   .modal-body-icon {
     padding-top: 1.875rem;
+  }
+.transaction__view-more {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+  .btn-view-more {
+    color: #0E0E0E;
+    padding: 0.6875rem 12rem;
+    text-align: center;
+    border-radius: 0.125rem;
+    cursor: pointer;
+    border: 0.0625rem solid #DBDDE1;
+    font-size: 20px;
+    font-weight: 300;
   }
 
   @media only screen and (min-width:20rem) {

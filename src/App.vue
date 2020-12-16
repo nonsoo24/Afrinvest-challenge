@@ -49,8 +49,6 @@ body {
   background-color: #fff;
   font-size: 1.125rem;
   line-height: 1.3125rem;
-  text-align: center;
-  letter-spacing: 0;
   cursor: pointer;
   color: #258C60;
   padding: 0.6875rem 2.875rem;
