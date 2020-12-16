@@ -308,6 +308,11 @@ export default {
     display: block;
   }
 
+  input:focus {
+    border: 1px solid #1F1F1F;
+    outline: none;
+  }
+
   .form-control {
     display: block;
     width: 100%;
@@ -392,6 +397,13 @@ export default {
     cursor: pointer;
     color: #fff;
   }
+
+  .btn-submit:hover {
+  color: #258C60;
+  background-color: #fff;
+  border: 1px solid #258C60;
+
+}
 
   /* .btn-submit:after {
     content: url('../assets/icons/arrow-right.svg');

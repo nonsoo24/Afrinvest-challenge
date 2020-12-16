@@ -68,7 +68,11 @@ body {
   color: #fff;
   padding: 0.6875rem 2.875rem;
 }
+.btn-success:hover {
+  color: #258C60;
+  background-color: #fff;
 
+}
 .text-success {
   color: #258C60;
 }
@@ -151,8 +155,6 @@ body {
   font-size: 1.3125rem !important;
 }
 
-
-
 @media only screen and (min-width:20rem) {
   .content-tab {
     padding: 1.25rem;
@@ -232,6 +234,11 @@ body {
     margin-left: 0;
     height: 100vh;
     background-color: #F6F6F6;
+  }
+
+    .btn-view-more {
+    padding: 0.6875rem 7rem;
+    font-size: 1rem;
   }
 }
 
@@ -321,6 +328,11 @@ body {
     height: 100vh;
     background-color: #F6F6F6;
   }
+
+  .btn-view-more {
+    padding: 0.6875rem 7rem;
+    font-size: 1rem;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 37.5rem and up) */
@@ -351,7 +363,6 @@ body {
   .sidebar {
     display: none;
   }
-
 
   .sticky-image-wrapper {
     display: none;
@@ -401,6 +412,11 @@ body {
     margin-left: 12.5rem;
     height: 100vh;
     background-color: #F6F6F6;
+  }
+
+ .btn-view-more {
+    padding: 0.6875rem 7rem;
+    font-size: 1rem;
   }
 }
 
@@ -491,6 +507,11 @@ body {
     height: 100vh;
     background-color: #F6F6F6;
   }
+
+  .btn-view-more {
+    padding: 0.6875rem 9rem;
+    font-size: 1rem;
+  }
 }
 
 /* Large devices (laptops/desktops, 62rem and up) */
@@ -517,11 +538,6 @@ body {
   .main-header__button {
     margin-top: 0;
   }
-
-  /* .home {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-  } */
 
   .sidebar {
     margin: 0;
@@ -600,6 +616,17 @@ body {
     z-index: 100;
     left: 0%;
     top: 30%;
+  }
+
+  .btn-view-more {
+    color: #0E0E0E;
+    padding: 0.6875rem 12rem;
+    text-align: center;
+    border-radius: 0.125rem;
+    cursor: pointer;
+    border: 0.0625rem solid #DBDDE1;
+    font-size: 20px;
+    font-weight: 300;
   }
 }
 

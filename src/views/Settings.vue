@@ -314,6 +314,7 @@ h3 {
 
 .settings__block-basic-title {
   border-right: 0.0625rem solid #DBDDE1;
+  margin-top: 1.25rem;
 }
 
 .profile-picture,

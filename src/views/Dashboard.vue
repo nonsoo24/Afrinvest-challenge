@@ -469,16 +469,6 @@ export default {
   justify-content: center;
   padding-bottom: 2rem;
 }
-  .btn-view-more {
-    color: #0E0E0E;
-    padding: 0.6875rem 12rem;
-    text-align: center;
-    border-radius: 0.125rem;
-    cursor: pointer;
-    border: 0.0625rem solid #DBDDE1;
-    font-size: 20px;
-    font-weight: 300;
-  }
 
   @media only screen and (min-width:20rem) {
     .main-header h4 {
