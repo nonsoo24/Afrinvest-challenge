@@ -41,7 +41,7 @@
                 <p v-if="activeMode == false">Welcome back, enter your details below</p>
               </div>
 
-              <p>{{message}}</p>
+              <!-- <p>{{message}}</p> -->
               <!-- user email -->
               <div v-if="activeMode">
                 <label for="email">Email</label>
