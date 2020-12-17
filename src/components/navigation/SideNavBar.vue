@@ -14,33 +14,15 @@
         </div>
       </div>
 
-      <router-link id="home" class="nav-link" to="/dashboard" tag="li" active-class="active" exact>
-        <img src="../../assets/icons/home.svg" alt="home-icon">
-        <span>Home</span>
+      <!-- Navigation link -->
+
+      <router-link v-for="(nav, navIndex) in navigation" :key= navIndex :id= nav.id class="nav-link"
+        :to= nav.path tag="li" active-class="active" exact>
+        <img :src= nav.imgUrl :alt= nav.alt>
+        <span> {{nav.text}} </span>
       </router-link>
 
-      <router-link id="invest" class="nav-link" to="/invest" tag="li" active-class="active" exact>
-        <img src="../../assets/icons/investment.svg" alt="invest-icon">
-        <span>Invest</span>
-      </router-link>
-
-      <router-link id="wallet" class="nav-link" to="/wallet" tag="li" active-class="active" exact>
-        <img src="../../assets/icons/wallet.svg" alt="wallet-icon">
-        <span>Wallet</span>
-      </router-link>
-
-      <router-link id="settings" class="nav-link" to="/settings" tag="li" active-class="active"
-        exact>
-        <img src="../../assets/icons/settings.svg" alt="settings-icon">
-        <span>Settings</span>
-      </router-link>
-
-      <router-link id="tell-a-friend" class="nav-link" to="/tell-friend" tag="li"
-        active-class="active" exact>
-        <img src="" alt="">
-        <!-- <img src="../assets/icons/settings.svg" alt="friend-icon"> -->
-        <span>Tell a friend</span>
-      </router-link>
+      <!-- Navigation link -->
 
       <div>
         <button class="sidebar-help text-success">
@@ -58,18 +40,59 @@
 <script>
 import {eventBus} from '../../main'
 export default {
-  methods: {
-    userHome() {
-      this.$router.push({
-        path: 'dashboard'
-      })
-    },
+   data() {
+       return {
+         navigation: [{
+             id: 'home',
+             path: '/dashboard',
+             alt: 'home-icon',
+             text: 'Home',
+             imgUrl: require('../../assets/icons/home.svg')
+           },
+           {
+             id: 'invest',
+             path: '/invest',
+             alt: 'invest-icon',
+             text: 'Invest',
+             imgUrl: require('../../assets/icons/investment.svg')
+           },
+           {
+             id: 'wallet',
+             path: '/wallet',
+             alt: 'wallet-icon',
+             text: 'Wallet',
+             imgUrl: require('../../assets/icons/wallet.svg')
+           },
+           {
+             id: 'settings',
+             path: '/settings',
+             alt: 'settings-icon',
+             text: 'Settings',
+             imgUrl: require('../../assets/icons/settings.svg')
+           },
+           {
 
-     toggle(){
-       eventBus.closeBtn();
-    }
-  }
-}
+             id: 'tell-a-friend',
+             path: '/tell-friend',
+             alt: '',
+             text: 'Tell a friend',
+             imgUrl: ''
+           }
+         ]
+       }
+     },
+     methods: {
+       userHome() {
+         this.$router.push({
+           path: 'dashboard'
+         })
+       },
+
+       toggle() {
+         eventBus.closeBtn();
+       }
+     }
+   }
 </script>
 
 <style>
