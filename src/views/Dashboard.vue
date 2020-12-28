@@ -138,18 +138,18 @@
               </div>
 
             </div>
+
+            <div class="transaction__view-more">
+              <button class="btn-view-more">View More</button>
+            </div>
+
           </div>
         </div>
-
-          <div class="transaction__view-more">
-              <button class="btn-view-more">View More</button>
-          </div>
-
       </main>
       <!-- Dashboard contents -->
 
       <!-- Modal contents -->
-      <Modal>
+      <Modal v-if="isModalOpen">
         <div slot="body">
 
           <div class="modal-body-icon">
@@ -163,14 +163,28 @@
               you as take a quick tour of the app.
             </p>
           </div>
-        </div>
 
-        <span slot="cancel">Let’s do this later</span>
-        <span slot="save">Show me Around</span>
+          <div class="modal-button">
+            <button @click="closeModal()" class="btn-close">
+              Let’s do this later
+            </button>
+
+            <button class="btn-success" @click="activateTour()">
+              Show me Around
+            </button>
+          </div>
+        </div>
+        <!-- <span slot="cancel">Let’s do this later</span>
+        <span slot="save">Show me Around</span> -->
 
       </Modal>
       <!-- Modal contents -->
     </div>
+
+    <!-- vue-tour -->
+    <v-tour name="myTour" :steps="steps"></v-tour>
+    <!-- vue-tour -->
+
   </div>
 </template>
 
@@ -179,12 +193,57 @@ import SideNavbar from '@/components/navigation/SideNavBar.vue';
 import NavBar from '@/components/navigation/NavBar.vue';
 import Modal from '@/components/modal/Modal.vue';
 import axios from 'axios'
+import {eventBus} from '../main'
 export default {
+  name: 'my-tour',
   data() {
     return {
       tabs: ['Watchlist', 'Recent Transaction'],
       activeTab: 'Watchlist',
-      firstName: ''
+      firstName: '',
+      isModalOpen: true,
+      steps: [{
+          target: '#home',
+          header: {
+            title: 'This is your home',
+          },
+          content: `Get an overview insight into your asset, securities,
+                      transactions, charts and watchlist`,
+          params: {
+            placement: 'left'
+          }
+        },
+        {
+          target: '#invest',
+          header: {
+            title: 'Investment',
+          },
+          content: `Get an overview insight into investments`,
+          params: {
+            placement: 'left'
+          }
+        },
+        {
+          target: '#wallet',
+          header: {
+            title: 'Wallet',
+          },
+          content: `Get an overview insight into wallet`,
+          params: {
+            placement: 'left'
+          }
+        },
+        {
+          target: '#tell-a-friend',
+          header: {
+            title: 'Tell a friend',
+          },
+          content: `Tell a friend about Afrinvest`,
+          params: {
+            placement: 'left'
+          }
+        }
+      ]
     }
   },
   components: {
@@ -203,6 +262,15 @@ export default {
       this.$router.push({
         path: 'settings'
       })
+    },
+    closeModal() {
+      //  eventBus.$emit('cancel', false);
+      this.isModalOpen = false
+
+    },
+    activateTour() {
+      this.$tours['myTour'].start()
+      this.isModalOpen = false
     },
 
     // async getDashboard() {
@@ -226,7 +294,7 @@ export default {
   },
   mounted() {
     // this.getDashboard()
-    this.getUserName()
+    //this.getUserName()
   },
 }
 </script>

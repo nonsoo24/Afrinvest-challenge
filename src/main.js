@@ -16,7 +16,10 @@ export const eventBus = new Vue({
   methods: {
     closeBtn() {
       this.$emit('close');
-    }
+    },
+    // closeModal() {
+    //   this.$emit('cancel');
+    // }
   }
 });
 

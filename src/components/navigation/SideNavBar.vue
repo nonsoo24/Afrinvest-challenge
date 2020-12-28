@@ -2,9 +2,12 @@
   <div>
     <div class="sidebar">
       <div class="sidebar__image-block">
+
+          <!-- Afrinvest logo -->
         <div class="afrinvest-logo" @click="userHome()">
           <img src="../../assets/images/logo.png" class="afrinvest-logo-image" alt="afrinvest-logo">
         </div>
+          <!-- Afrinvest logo -->
 
         <div>
           <!-- close button -->
@@ -24,6 +27,9 @@
 
       <!-- Navigation link -->
 
+
+  <!-- Get help -->
+
       <div>
         <button class="sidebar-help text-success">
           Get Help
@@ -32,6 +38,9 @@
           <i class="far fa-question-circle text-success"></i>
         </span>
       </div>
+
+      <!-- Get help -->
+
     </div>
 
   </div>
@@ -82,12 +91,14 @@ export default {
        }
      },
      methods: {
+       //route to dashboard home on click of afrinvest logo
        userHome() {
          this.$router.push({
            path: 'dashboard'
          })
        },
 
+       //close side navbar on small screens
        toggle() {
          eventBus.closeBtn();
        }

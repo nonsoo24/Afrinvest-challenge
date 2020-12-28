@@ -57,6 +57,10 @@
                     <p>Olushola</p>
                   </div>
                 </div>
+
+                <div class="settings__block-basic-button">
+                  <button class="btn-close" @click="editUser()">{{button.text}}</button>
+                </div>
               </div>
 
 
@@ -82,6 +86,11 @@
                     <p>2, Clement Ashford crescent, Gbagada, Lagos</p>
                     <p>Sister</p>
                   </div>
+                </div>
+
+
+                <div class="settings__block-basic-button">
+                  <button class="btn-close" @click="editUser()">{{button.text}}</button>
                 </div>
               </div>
 
@@ -109,13 +118,15 @@
                     <p>Nigerian</p>
                   </div>
                 </div>
+
+
+                <div class="settings__block-basic-button">
+                  <button class="btn" :class="[button.isEdit ? saveClass : '', editClass]" @click="editUser()">{{button.text}}</button>
+                </div>
               </div>
 
             </div>
 
-            <div class="settings__block-button">
-              <button class="btn-close">Edit</button>
-            </div>
           </div>
 
           <!-- profile tab -->
@@ -138,10 +149,14 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      tabs: ['Profile', 'Bank Details', 'Password & Security', 'Support', 'Account Type',
-        'Glossary'
-      ],
+      tabs: ['Profile', 'Bank Details', 'Password & Security', 'Support', 'Account Type', 'Glossary'],
       activeTab: 'Profile',
+      button: {
+        isEdit: false,
+        text: 'Edit',
+        editClass: 'btn-close',
+        saveClass: 'btn-success'
+      },
       editProfile: {
         basicInfo: {
           middlename: '',
@@ -186,7 +201,7 @@ export default {
     }
   },
   methods: {
-    editUserProfile() {
+    saveProfile() {
       let url, userData;
 
       switch (currentTab) {
@@ -238,9 +253,6 @@ export default {
           }
         })
         .catch(error => {
-          loginButton.innerHTML = 'Create My Free Account'
-          loginButton.disabled = false;
-
           $toast.error(error, '', {
             position: 'topRight',
             timeout: 5000
@@ -248,6 +260,18 @@ export default {
           // console.error(error)
         })
 
+    },
+
+    editUser() {
+      debugger
+      if(!this.button.isEdit) {
+        this.button.isEdit = true;
+        this.button.text = 'Edit'
+
+      } else {
+        this.button.isEdit = false;
+        this.button.text = 'Save'
+      }
     }
     },
     components: {
@@ -287,20 +311,16 @@ h3 {
 }
 
 .settings__block-wrapper {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-column-gap: 1.25rem;
-  justify-content: space-between;
   padding: 2.5rem 1.25rem 0 1.25rem;
 }
 
-.settings__block-button {
+.settings__block-basic-button {
   justify-self: flex-end;
 }
 
 .settings__block-basic {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 3fr 1fr;
   grid-column-gap: 1.25rem;
   margin-top: 2.5rem;
 }
@@ -342,5 +362,10 @@ h5 {
 
 img {
   margin-bottom: 1.125rem
+}
+
+.btn.btn-close, .btn-success  {
+  padding: 0.6875rem 2.3rem;
+  font-size: 1rem;
 }
 </style>

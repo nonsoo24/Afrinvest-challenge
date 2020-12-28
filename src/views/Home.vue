@@ -193,6 +193,7 @@ export default {
         loginButton.innerHTML = `<i class="fa fa-spinner fa-spin fa-2x">`
         loginButton.disabled = true;
         const { $toast } = this;
+
         axios.post("/user/register", JSON.stringify(this.account), {
             headers: {
               'content-type': 'application/json',
@@ -255,7 +256,7 @@ export default {
           })
           .then(response => {
             if (response.data.status) {
-              localStorage.setItem('token', JSON.stringify(response.data.data['access_token']))
+              localStorage.setItem('user-token', response.data.data['access_token'])
 
               this.userDashboard()
 
@@ -464,15 +465,17 @@ export default {
     left: 0;
     height: 1.5625rem;
     width: 1.5625rem;
-    background-color: #eee;
+    border: 1px solid #DCD9D9;
+    background-color: #FFFFFF;
   }
 
   .container:hover input~.checkmark {
-    background-color: #ccc;
+    background-color: #fff;
+    border: 1px solid #1F1F1F;
   }
 
   .container input:checked~.checkmark {
-    background-color: #258C60;
+    background-color: #fff;
   }
 
   .checkmark:after {
@@ -482,7 +485,15 @@ export default {
   }
 
   .container input:checked~.checkmark:after {
+    content: "";
     display: block;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 14px;
+    height: 14px;
+    background-color: #258C60;
+     transform: scale(0.75);
   }
 
   .container .checkmark:after {

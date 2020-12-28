@@ -21,7 +21,7 @@ const routes = [{
     // which is lazy-loaded when the route is visited.
     component: () => import( /* webpackChunkName: "about" */ '../views/Dashboard.vue'),
     beforeEnter(to, from, next) {
-      const accessToken = JSON.parse(window.localStorage.getItem('token'));
+      const accessToken = JSON.parse(window.localStorage.getItem('user-token'));
       if (accessToken !== null) {
         next()
       } else {
@@ -34,7 +34,7 @@ const routes = [{
     name: 'Invest',
     component: () => import( /* webpackChunkName: "about" */ '../views/Invest.vue'),
     beforeEnter(to, from, next) {
-      const accessToken = JSON.parse(window.localStorage.getItem('token'));
+      const accessToken = JSON.parse(window.localStorage.getItem('user-token'));
       if (accessToken !== null) {
         next()
       } else {
@@ -47,7 +47,7 @@ const routes = [{
     name: 'Settings',
     component: () => import( /* webpackChunkName: "about" */ '../views/Settings.vue'),
     beforeEnter(to, from, next) {
-      const accessToken = JSON.parse(window.localStorage.getItem('token'));
+      const accessToken = JSON.parse(window.localStorage.getItem('user-token'));
       if (accessToken !== null) {
         next()
       } else {
@@ -60,7 +60,7 @@ const routes = [{
     name: 'Wallet',
     component: () => import( /* webpackChunkName: "about" */ '../views/Wallet.vue'),
     beforeEnter(to, from, next) {
-      const accessToken = JSON.parse(window.localStorage.getItem('token'));
+      const accessToken = JSON.parse(window.localStorage.getItem('user-token'));
       if (accessToken !== null) {
         next()
       } else {

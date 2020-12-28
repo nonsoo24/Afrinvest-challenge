@@ -55,6 +55,11 @@ body {
   border: 0.0625rem solid #979797;
 }
 
+.btn-close:hover {
+  color: #258C60;
+  border: 0.0625rem solid #258C60;
+}
+
 .btn-success {
   text-align: center;
   border-radius: 0.125rem;
@@ -71,6 +76,7 @@ body {
 .btn-success:hover {
   color: #258C60;
   background-color: #fff;
+  border: 1px solid #258C60;
 
 }
 .text-success {
