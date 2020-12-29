@@ -8,6 +8,16 @@ require('vue-tour/dist/vue-tour.css')
 Vue.use(VueRouter);
 Vue.use(VueTour)
 
+const ifAuthenticated = (to, from, next) => {
+  // debugger
+  const userToken = JSON.parse(window.localStorage.getItem('user-token'));
+  if (userToken !== null) {
+    next()
+  } else {
+    next('/')
+  }
+}
+
 const routes = [{
     path: '/',
     name: 'Home',
@@ -20,53 +30,25 @@ const routes = [{
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import( /* webpackChunkName: "about" */ '../views/Dashboard.vue'),
-    beforeEnter(to, from, next) {
-      const accessToken = JSON.parse(window.localStorage.getItem('user-token'));
-      if (accessToken !== null) {
-        next()
-      } else {
-        next('/')
-      }
-    }
+    beforeEnter: ifAuthenticated
   },
   {
     path: '/invest',
     name: 'Invest',
     component: () => import( /* webpackChunkName: "about" */ '../views/Invest.vue'),
-    beforeEnter(to, from, next) {
-      const accessToken = JSON.parse(window.localStorage.getItem('user-token'));
-      if (accessToken !== null) {
-        next()
-      } else {
-        next('/')
-      }
-    }
+    beforeEnter: ifAuthenticated
   },
   {
     path: '/settings',
     name: 'Settings',
     component: () => import( /* webpackChunkName: "about" */ '../views/Settings.vue'),
-    beforeEnter(to, from, next) {
-      const accessToken = JSON.parse(window.localStorage.getItem('user-token'));
-      if (accessToken !== null) {
-        next()
-      } else {
-        next('/')
-      }
-    }
+    beforeEnter: ifAuthenticated
   },
   {
     path: '/wallet',
     name: 'Wallet',
     component: () => import( /* webpackChunkName: "about" */ '../views/Wallet.vue'),
-    beforeEnter(to, from, next) {
-      const accessToken = JSON.parse(window.localStorage.getItem('user-token'));
-      if (accessToken !== null) {
-        next()
-      } else {
-        next('/')
-      }
-    }
+    beforeEnter: ifAuthenticated
   },
 ];
 

@@ -90,8 +90,8 @@
               <!-- Remember me/forgot password -->
               <div class="forgot-password" v-if="activeMode == false">
                 <div class="remember-block">
-                  <label class="container">Remember me
-                    <input type="checkbox">
+                  <label class="container" for="remember-me">Remember me
+                    <input id="remember-me" type="checkbox" v-model="isRememberMe">
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -101,6 +101,7 @@
                     password</a>
                 </div>
               </div>
+
               <!-- Remember me/forgot password -->
 
               <!-- action button -->
@@ -139,6 +140,7 @@ import axios from 'axios'
 export default {
   data() {
       return {
+        isRememberMe: false,
         passwordType: 'password',
         password: '',
         message: '',
@@ -256,7 +258,7 @@ export default {
           })
           .then(response => {
             if (response.data.status) {
-              localStorage.setItem('user-token', response.data.data['access_token'])
+              localStorage.setItem('user-token', JSON.stringify(response.data.data['access_token'])) // store the token in localstorage
 
               this.userDashboard()
 
@@ -278,6 +280,7 @@ export default {
             loginButton.innerHTML = 'Login'
             loginButton.disabled = false;
             this.message = error
+            localStorage.removeItem('user-token') // if the request fails, remove any possible user token if possible
             $toast.error(this.message, '', {
               position: 'topRight',
               timeout: 5000

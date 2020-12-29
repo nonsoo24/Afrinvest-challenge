@@ -2,6 +2,7 @@
   <div>
     <SideNavbar />
     <NavBar />
+    <Feedback />
 
     <div class="content">
       <h3>Settings</h3>
@@ -145,6 +146,7 @@
 <script>
 import SideNavbar from '@/components/navigation/SideNavBar.vue';
 import NavBar from '@/components/navigation/NavBar.vue';
+import Feedback from '@/components/FeedBack.vue';
 import axios from 'axios'
 export default {
   data() {
@@ -276,7 +278,8 @@ export default {
     },
     components: {
       SideNavbar,
-      NavBar
+      NavBar,
+      Feedback
     }
     }
 </script>

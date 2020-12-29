@@ -7,6 +7,11 @@ import store from './store';
 import VueIziToast from 'vue-izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
+// const token = localStorage.getItem('user-token')
+// if (token) {
+//   axios.defaults.headers.common['Authorization'] = token
+// }
+
 axios.defaults.headers.get['Accepts'] = 'application/json';
 axios.defaults.baseURL = 'https://tranquil-bayou-87162.herokuapp.com';
 axios.interceptors.request.use((config) => config);
