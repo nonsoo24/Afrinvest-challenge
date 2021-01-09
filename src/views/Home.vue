@@ -196,12 +196,7 @@ export default {
         loginButton.disabled = true;
         const { $toast } = this;
 
-        axios.post("/user/register", JSON.stringify(this.account), {
-            headers: {
-              'content-type': 'application/json',
-              'Accept': 'application/json'
-            }
-          })
+        axios.post("/user/register", JSON.stringify(this.account))
           .then(response => {
             if (response.data.status) {
               this.message = response.data.message
@@ -247,15 +242,10 @@ export default {
         const username = this.account.username
         const password = this.account.password
 
-        axios.post("/user/login", JSON.stringify({
-            username,
-            password
-          }), {
-            headers: {
-              'content-type': 'application/json',
-              'Accept': 'application/json'
-            }
-          })
+        if(this.isRememberMe === true) {
+
+        } else {
+           axios.post("/user/login", JSON.stringify({ username, password }))
           .then(response => {
             if (response.data.status) {
               localStorage.setItem('user-token', JSON.stringify(response.data.data['access_token'])) // store the token in localstorage
@@ -288,6 +278,7 @@ export default {
             // console.error(error)
           })
 
+        }
       },
 
 

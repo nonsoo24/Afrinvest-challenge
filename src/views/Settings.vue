@@ -17,13 +17,13 @@
           <!-- nav tab -->
 
           <!-- profile tab -->
-
           <div class="settings__block-wrapper" v-if="activeTab === 'Profile'">
             <div class="settings__block-profile">
 
+              <!-- Basic Data -->
               <div class="settings__block-basic">
                 <div class="settings__block-basic-title">
-                  <h4>Basic data</h4>
+                  <h4>Basic Data</h4>
                 </div>
 
                 <div class="settings__block-basic-items">
@@ -47,88 +47,143 @@
 
                   </div>
 
-                  <div class="settings__block-basic-name">
+                  <div class="settings__block-basic-name" v-if="!isEditingBasic">
                     <img src="../assets/icons/rahul.svg" alt="profile-picture">
-                    <p>Micheal</p>
-                    <p>Boluwatife</p>
-                    <p>Okafor</p>
-                    <p>+234 7056329624</p>
-                    <p>23rd July 1988</p>
-                    <p>Male</p>
-                    <p>Olushola</p>
+                    <p>{{editProfile.basicInfo.firstname}}</p>
+                    <p>{{editProfile.basicInfo.middlename}}</p>
+                    <p>{{editProfile.basicInfo.lastname}}</p>
+                    <p>{{editProfile.basicInfo.phone_number}}</p>
+                    <p>{{editProfile.basicInfo.date_of_birth}}</p>
+                    <p>{{editProfile.basicInfo.gender}}</p>
+                    <p>{{editProfile.basicInfo.mother_maiden_name}}</p>
+                  </div>
+
+                  <div class="settings__block-basic-name" v-if="isEditingBasic">
+                    <img src="../assets/icons/rahul.svg" alt="profile-picture">
+                    <p>{{editProfile.basicInfo.firstname}}</p>
+                    <input type="text" class="form-control" value=""
+                      v-model="editProfile.basicInfo.middlename" />
+                    <p>{{editProfile.basicInfo.lastname}}</p>
+                    <input type="text" class="form-control" value=""
+                      v-model="editProfile.basicInfo.phone_number" />
+                    <input type="text" class="form-control" value=""
+                      v-model="editProfile.basicInfo.date_of_birth" />
+                    <input type="text" class="form-control" value=""
+                      v-model="editProfile.basicInfo.gender" />
+                    <input type="text" class="form-control" value=""
+                      v-model="editProfile.basicInfo.mother_maiden_name" />
                   </div>
                 </div>
 
                 <div class="settings__block-basic-button">
-                  <button class="btn-close" @click="editUser()">{{button.text}}</button>
-                </div>
-              </div>
-
-
-              <div class="settings__block-basic">
-                <div class="settings__block-basic-title">
-                  <h4>Next of Kin</h4>
+                  <button class="btn-close" @click="toggleEdit('basicData', 1)"
+                    v-if="!isEditingBasic">Edit</button>
+                  <button class="btn-success" @click="saveProfile('basicData')"
+                    v-if="isEditingBasic">Save</button>
                 </div>
 
-                <div class="settings__block-basic-items">
-                  <div class="settings__block-basic-label">
-                    <p>Full name</p>
-                    <p>Email</p>
-                    <p>Phone Number</p>
-                    <p>Address</p>
-                    <p>Relationship</p>
-
-                  </div>
-
-                  <div class="settings__block-basic-name">
-                    <p>Bolanle Okafor</p>
-                    <p>bola@gmail.com</p>
-                    <p>070563296524</p>
-                    <p>2, Clement Ashford crescent, Gbagada, Lagos</p>
-                    <p>Sister</p>
-                  </div>
-                </div>
-
-
-                <div class="settings__block-basic-button">
-                  <button class="btn-close" @click="editUser()">{{button.text}}</button>
-                </div>
-              </div>
-
-
-              <div class="settings__block-basic">
-                <div class="settings__block-basic-title">
-                  <h4>Address</h4>
-                </div>
-
-                <div class="settings__block-basic-items">
-                  <div class="settings__block-basic-label">
-                    <p>Residential Address</p>
-                    <p>City</p>
-                    <p>State</p>
-                    <p>Country</p>
-                    <p>Nationality</p>
-
-                  </div>
-
-                  <div class="settings__block-basic-name">
-                    <p>2, Clement Ashford crescent, Gbagada, Lagos</p>
-                    <p>Lagos</p>
-                    <p>Lagos</p>
-                    <p>Nigeria</p>
-                    <p>Nigerian</p>
-                  </div>
-                </div>
-
-
-                <div class="settings__block-basic-button">
-                  <button class="btn" :class="[button.isEdit ? saveClass : '', editClass]" @click="editUser()">{{button.text}}</button>
-                </div>
               </div>
 
             </div>
+            <!-- Basic Data -->
 
+            <!-- Next of Kin -->
+            <div class="settings__block-basic">
+              <div class="settings__block-basic-title">
+                <h4>Next of Kin</h4>
+              </div>
+
+              <div class="settings__block-basic-items">
+                <div class="settings__block-basic-label">
+                  <p>Full name</p>
+                  <p>Email</p>
+                  <p>Phone Number</p>
+                  <p>Address</p>
+                  <p>Relationship</p>
+
+                </div>
+
+                <div class="settings__block-basic-name" v-if="!isEditingKin">
+                  <p>{{editProfile.nextOfKin.full_name}}</p>
+                  <p>{{editProfile.nextOfKin.email}}</p>
+                  <p>{{editProfile.nextOfKin.phone_number}}</p>
+                  <p>{{editProfile.nextOfKin.residential_address}}</p>
+                  <p>{{editProfile.nextOfKin.relationship}}</p>
+                </div>
+
+                <div class="settings__block-basic-name" v-if="isEditingKin">
+                  <input type="text" class="form-control" value=""
+                    v-model="editProfile.nextOfKin.full_name" />
+                  <input type="text" class="form-control" value=""
+                    v-model="editProfile.nextOfKin.email" />
+                  <input type="text" class="form-control" value=""
+                    v-model="editProfile.nextOfKin.phone_number" />
+                  <input type="text" class="form-control" value=""
+                    v-model="editProfile.nextOfKin.residential_address" />
+                  <input type="text" class="form-control" value=""
+                    v-model="editProfile.nextOfKin.relationship" />
+                </div>
+              </div>
+
+
+
+              <div class="settings__block-basic-button">
+                <button class="btn-close" @click="toggleEdit('nextOfKin', 1)"
+                  v-if="!isEditingKin">Edit</button>
+                <button class="btn-success" @click="saveProfile('nextOfKin')"
+                  v-if="isEditingKin">Save</button>
+              </div>
+            </div>
+            <!-- Next of Kin -->
+
+            <!-- Address -->
+            <div class="settings__block-basic">
+              <div class="settings__block-basic-title">
+                <h4>Address</h4>
+              </div>
+
+              <div class="settings__block-basic-items">
+                <div class="settings__block-basic-label">
+                  <p>Residential Address</p>
+                  <p>City</p>
+                  <p>State</p>
+                  <p>Country</p>
+                  <p>Nationality</p>
+                </div>
+
+                <div class="settings__block-basic-name" v-if="!isEditingAddress">
+                  <p>{{editProfile.userAddress.address}}</p>
+                  <p>{{editProfile.userAddress.city}}</p>
+                  <p>{{editProfile.userAddress.state_of_origin}}</p>
+                  <p>{{editProfile.userAddress.country}}</p>
+                  <p>{{editProfile.userAddress.nationality}}</p>
+                </div>
+
+                <div class="settings__block-basic-name" v-if="isEditingAddress">
+                  <input type="text" class="form-control" value=""
+                    v-model="editProfile.userAddress.address" />
+                  <input type="text" class="form-control" value=""
+                    v-model="editProfile.userAddress.city" />
+                  <input type="text" class="form-control" value=""
+                    v-model="editProfile.userAddress.state_of_origin" />
+                  <input type="text" class="form-control" value=""
+                    v-model="editProfile.userAddress.country" />
+                  <input type="text" class="form-control" value=""
+                    v-model="editProfile.userAddress.nationality" />
+                </div>
+              </div>
+
+
+              <div class="settings__block-basic-button">
+                <button class="btn-close" @click="toggleEdit('address', 1)"
+                  v-if="!isEditingAddress">Edit</button>
+                <button class="btn-success" @click="saveProfile('address')"
+                  v-if="isEditingAddress">Save</button>
+              </div>
+            </div>
+            <!-- Address -->
           </div>
+
 
           <!-- profile tab -->
 
@@ -150,138 +205,162 @@ import Feedback from '@/components/FeedBack.vue';
 import axios from 'axios'
 export default {
   data() {
-    return {
-      tabs: ['Profile', 'Bank Details', 'Password & Security', 'Support', 'Account Type', 'Glossary'],
-      activeTab: 'Profile',
-      button: {
-        isEdit: false,
-        text: 'Edit',
-        editClass: 'btn-close',
-        saveClass: 'btn-success'
+      return {
+        tabs: ['Profile', 'Bank Details', 'Password & Security', 'Support', 'Account Type',
+          'Glossary'
+        ],
+        activeTab: 'Profile',
+        editProfile: {
+          basicInfo: {
+            middlename: 'Boluwatife',
+            phone_number: "+234 7056329624",
+            gender: 'Male',
+            mother_maiden_name: 'Olushola',
+            date_of_birth: '23rd July 1988',
+            firstname: 'Micheal',
+            lastname: 'Okafor'
+
+          },
+          userAddress: {},
+          nextOfKin: {}
+        },
+        isEditingBasic: false,
+        isEditingKin: false,
+        isEditingAddress: false,
+        message: ''
+      }
+    },
+    methods: {
+      //switch between editable fields and non-editable fields
+      toggleEdit(item, status) {
+        debugger
+        if (item === 'basicData') {
+          status == 1 ? this.isEditingBasic = true : this.isEditingBasic = false
+        } else if (item === 'nextOfKin') {
+          status == 1 ? this.isEditingKin = true : this.isEditingKin = false
+        } else if (item === 'address') {
+          status == 1 ? this.isEditingAddress = true : this.isEditingAddress = false
+        }
+
       },
-      editProfile: {
-        basicInfo: {
-          middlename: '',
-          phone_number: "09863526723",
-          gender: '',
-          mother_maiden_name: '',
-          date_of_birth: ''
 
-        },
-        userAddress: {
-          address: '',
-          city: '',
-          state_of_origin: '',
-          country: '',
-          nationality: ''
-        },
-        nextOfKin: {
-          full_name: '',
-          email: '',
-          phone_number: '',
-          residential_address: '',
-          relationship: ''
+      //save basic data, next kin and address to the DB
+      saveProfile(userData) {
+        let url, data;
 
-        },
-
-        bankDetails: {
-          full_name: '',
-          email: '',
-          phone_number: '',
-          residential_address: '',
-          relationship: ''
-        },
-        documents: {
-          passport: '',
-          proof_of_identity: '',
-          utility_bill: '',
-          signature: ''
-
+        switch (userData) {
+          case 'basicData':
+            url = 'basic'
+            data = this.editProfile.basicInfo
+            break;
+          case 'address':
+            url = 'address'
+            data = this.editProfile.userAddress
+            break;
+          case 'nextOfKin':
+            url = 'kin'
+            data = this.editProfile.nextOfKin
+            break;
 
         }
-      }
-    }
-  },
-  methods: {
-    saveProfile() {
-      let url, userData;
 
-      switch (currentTab) {
-        case 1:
-          url = 'basic'
-          userData = this.editProfile.basicInfo
-          break;
-        case 2:
-          url = 'address'
-          userData = this.editProfile.userAddress
-          break;
-        case 3:
-          url = 'kin'
-          userData = this.editProfile.nextOfKin
-          break;
-        case 4:
-          url = 'bank'
-          userData = this.editProfile.bankDetails
-          break;
-        default:
-          url = 'document'
-          userData = this.editProfile.documents
+        const { $toast } = this;
+        axios.post(`/user/${url}`, JSON.stringify(data))
+          .then(response => {
+            if (response.data.status) {
+              $toast.success(response.data.message, '', {
+                position: 'topRight',
+                timeout: 5000
+              })
 
-      }
+              this.toggleEdit(userData, 2)
 
-      const {  $toast } = this;
-      axios.post(`/user/${url}`, JSON.stringify(userData), {
-          headers: {
-            'content-type': 'application/json',
-            'Accept': 'application/json'
-          }
-        })
-        .then(response => {
-          if (response.data.status) {
+            } else {
+              // this.message = response.data.message
 
-            this.message = response.data.message
-            $toast.success(this.message, '', {
+              $toast.error(response.data.message.toString(), '', {
+                position: 'topRight',
+                timeout: 5000
+              })
+            }
+          })
+          .catch(error => {
+            $toast.error(error.toString(), '', {
               position: 'topRight',
               timeout: 5000
             })
+          })
 
-          } else {
-            this.message = response.data.message
+      },
+      //fetch user address from the DB
+      getAddress() {
+        const { $toast } = this;
+        // axios.all([
+        //   axios.get('/user/basic'),
+        //   axios.get('/user/kin'),
+        //   axios.get('/user/address')
+        // ])
 
-            $toast.error(this.message, '', {
-              position: 'topRight',
-              timeout: 5000
-            })
-          }
-        })
-        .catch(error => {
-          $toast.error(error, '', {
+        axios.get('/user/address').then(response => {
+          //  console.log( response.data.data);
+          this.editProfile.userAddress = response.data.data;
+
+        }).catch(error => {
+          $toast.error(error.toString(), '', {
             position: 'topRight',
             timeout: 5000
           })
-          // console.error(error)
-        })
+          // console.error(error);
+        });
 
-    },
+      },
 
-    editUser() {
-      debugger
-      if(!this.button.isEdit) {
-        this.button.isEdit = true;
-        this.button.text = 'Edit'
+      //fetch user next of kin from the DB
+      getNextOfKin() {
+        const { $toast } = this;
+        axios.get('/user/kin').then(response => {
+          //  console.log( response.data.data);
+          this.editProfile.nextOfKin = response.data.data;
 
-      } else {
-        this.button.isEdit = false;
-        this.button.text = 'Save'
-      }
-    }
+        }).catch(error => {
+          $toast.error(error.toString(), '', {
+            position: 'topRight',
+            timeout: 5000
+          })
+          // console.error(error);
+        });
+
+
+      },
+
+      // getBasicData() {
+      //    const { $toast } = this;
+      //    axios.get('/user/basic').then(response => {
+      //      console.log( response.data.data);
+      //     this.editProfile.basicInfo = response.data.data;
+
+      //   }).catch(error => {
+      //      $toast.error(error.toString(), '', {
+      //         position: 'topRight',
+      //         timeout: 5000
+      //       })
+      //     // console.error(error);
+      //   });
+
+      // }
     },
     components: {
       SideNavbar,
       NavBar,
       Feedback
-    }
-    }
+    },
+    mounted() {
+      // this.getBasicData()
+      this.getNextOfKin()
+      this.getAddress()
+    },
+
+  }
 </script>
 
 <style scoped>
@@ -300,6 +379,9 @@ h3 {
 .content {
   padding: 2.5rem;
 }
+ /* div.content {
+    height: 100vh;
+  } */
 
 .content-tab {
   font-size: 1.125rem;
@@ -307,6 +389,7 @@ h3 {
 
 .settings__block-navtabs {
   border-bottom: 0.0625rem solid #DBDDE1;
+  padding-bottom: 20px;
 }
 
 .settings__block-navtabs.active {
@@ -351,11 +434,13 @@ h3 {
 span {
   color: #999999;
   text-align: right;
+  margin-bottom: 2rem;
 }
 
 .settings__block-basic-name p {
   color: #1F1F1F;
   text-align: left;
+  margin-bottom: 2rem;
 }
 
 h5 {
@@ -367,8 +452,29 @@ img {
   margin-bottom: 1.125rem
 }
 
-.btn.btn-close, .btn-success  {
-  padding: 0.6875rem 2.3rem;
-  font-size: 1rem;
+.btn-success  {
+  padding: 0.6875rem 2.875rem;
+  font-size: 1.125rem;
+  margin-right: 1.5rem;
+  border-radius: 0.125rem;
 }
+.content-tab.active {
+  color: #258C60;
+    border-bottom: 5px solid #258C60;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0.0625rem solid #DCD9D9;
+    height: 3.125rem;
+    margin-bottom: 1.2rem;
+
+  }
 </style>

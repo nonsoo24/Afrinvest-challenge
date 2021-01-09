@@ -262,7 +262,7 @@ export default {
       })
     },
     closeModal() {
-      //  eventBus.$emit('cancel', false);
+      //eventBus.$emit('cancel', false);
       this.isModalOpen = false
 
     },
