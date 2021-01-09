@@ -61,16 +61,16 @@
                   <div class="settings__block-basic-name" v-if="isEditingBasic">
                     <img src="../assets/icons/rahul.svg" alt="profile-picture">
                     <p>{{editProfile.basicInfo.firstname}}</p>
-                    <input type="text" class="form-control" value=""
+                    <input type="text" class="form-control"
                       v-model="editProfile.basicInfo.middlename" />
                     <p>{{editProfile.basicInfo.lastname}}</p>
-                    <input type="text" class="form-control" value=""
+                    <input type="text" class="form-control"
                       v-model="editProfile.basicInfo.phone_number" />
-                    <input type="text" class="form-control" value=""
+                    <input type="text" class="form-control"
                       v-model="editProfile.basicInfo.date_of_birth" />
-                    <input type="text" class="form-control" value=""
+                    <input type="text" class="form-control"
                       v-model="editProfile.basicInfo.gender" />
-                    <input type="text" class="form-control" value=""
+                    <input type="text" class="form-control"
                       v-model="editProfile.basicInfo.mother_maiden_name" />
                   </div>
                 </div>
@@ -112,15 +112,15 @@
                 </div>
 
                 <div class="settings__block-basic-name" v-if="isEditingKin">
-                  <input type="text" class="form-control" value=""
+                  <input type="text" class="form-control"
                     v-model="editProfile.nextOfKin.full_name" />
-                  <input type="text" class="form-control" value=""
+                  <input type="text" class="form-control"
                     v-model="editProfile.nextOfKin.email" />
-                  <input type="text" class="form-control" value=""
+                  <input type="text" class="form-control"
                     v-model="editProfile.nextOfKin.phone_number" />
-                  <input type="text" class="form-control" value=""
+                  <input type="text" class="form-control"
                     v-model="editProfile.nextOfKin.residential_address" />
-                  <input type="text" class="form-control" value=""
+                  <input type="text" class="form-control"
                     v-model="editProfile.nextOfKin.relationship" />
                 </div>
               </div>
@@ -160,13 +160,13 @@
                 </div>
 
                 <div class="settings__block-basic-name" v-if="isEditingAddress">
-                  <input type="text" class="form-control" value=""
+                  <input type="text" class="form-control"
                     v-model="editProfile.userAddress.address" />
-                  <input type="text" class="form-control" value=""
+                  <input type="text" class="form-control"
                     v-model="editProfile.userAddress.city" />
-                  <input type="text" class="form-control" value=""
+                  <input type="text" class="form-control"
                     v-model="editProfile.userAddress.state_of_origin" />
-                  <input type="text" class="form-control" value=""
+                  <input type="text" class="form-control"
                     v-model="editProfile.userAddress.country" />
                   <input type="text" class="form-control" value=""
                     v-model="editProfile.userAddress.nationality" />

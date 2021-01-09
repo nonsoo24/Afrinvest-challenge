@@ -4,6 +4,7 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
+import Vuelidate from 'vuelidate'
 import VueIziToast from 'vue-izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
@@ -36,6 +37,7 @@ export const eventBus = new Vue({
 });
 
 Vue.use(VueIziToast);
+Vue.use(Vuelidate);
 Vue.config.productionTip = false;
 // router.beforeEach((to, from, next) => {
 //   const accessToken = JSON.parse(localStorage.getItem('token'));

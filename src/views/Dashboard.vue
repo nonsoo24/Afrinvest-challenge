@@ -267,8 +267,11 @@ export default {
 
     },
     activateTour() {
-      this.$tours['myTour'].start()
-      this.isModalOpen = false
+      const userToken = JSON.parse(window.localStorage.getItem('user-token'));
+      if (userToken !== null) {
+        this.$tours['myTour'].start()
+        this.isModalOpen = false
+      }
     },
 
     // async getDashboard() {

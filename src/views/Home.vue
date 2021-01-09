@@ -7,10 +7,8 @@
       </div>
     </div>
 
-
-
     <div class="home-content">
-      <!-- sign up Content -->
+      <!-- sign up/ login Content -->
       <div class="sign-wrapper">
 
         <!-- header Content -->
@@ -42,34 +40,64 @@
               </div>
 
               <!-- <p>{{message}}</p> -->
+
               <!-- user email -->
-              <div v-if="activeMode">
+              <div v-if="activeMode" class="form-group"
+                :class="{'invalid': $v.account.email.$error}">
                 <label for="email">Email</label>
                 <input id="email" type="text" class="form-control"
                   placeholder="e.g michealolawale@gmail.com" v-model="account.email">
+
+                <p id="error-email" class="error" v-if="!$v.account.email.email">Please enter a
+                  valid email address</p>
+
+                <div class="error" v-if="$v.account.email.$error">
+                  <p id="error-email" v-if="!$v.account.email.required">Email is required</p>
+                </div>
+
               </div>
               <!-- user email -->
 
+
               <!-- username -->
-              <div>
+              <div class="form-group" :class="{'invalid': $v.account.username.$error}">
                 <label for="username">{{username}}</label>
                 <input id="username" type="text" class="form-control" placeholder="e.g mikeola"
                   v-model="account.username">
+
+                <div v-if="$v.account.username.$error">
+                  <p id="error-first-name" class="error" v-if="!$v.account.username.required">
+                    Username is required
+                  </p>
+                </div>
               </div>
+
               <!-- username -->
 
               <!-- user fullname -->
               <div class="fullname-block" v-if="activeMode">
-                <div>
+                <div class="form-group" :class="{'invalid': $v.account.firstname.$error}">
                   <label for="first-name">First name</label>
                   <input id="first-name" type="text" class="form-control" placeholder="e.g Mayowa"
                     v-model="account.firstname">
+
+                  <div v-if="$v.account.firstname.$error">
+                    <p id="error-first-name" class="error" v-if="!$v.account.firstname.required">
+                      First name is required
+                    </p>
+                  </div>
                 </div>
 
-                <div>
+                <div class="form-group" :class="{'invalid': $v.account.lastname.$error}">
                   <label for="last-name">Last name</label>
                   <input id="last-name" type="text" class="form-control" placeholder="Olawale"
                     v-model="account.lastname">
+
+                  <div v-if="$v.account.lastname.$error">
+                    <p id="error-first-name" class="error" v-if="!$v.account.lastname.required">
+                      Last name is required
+                    </p>
+                  </div>
                 </div>
               </div>
               <!-- user fullname -->
@@ -77,12 +105,23 @@
               <!-- user password -->
               <div>
                 <label for="password">Password</label>
-                <div>
+                <div class="form-group" :class="{'invalid': $v.account.password.$error}">
                   <input id="password" :type="passwordType" class="form-control"
                     placeholder="At least 8 characters" v-model="account.password">
                   <span class="toggle-password" @click="togglePassword" v-if="activeMode"> <img
                       src="../assets/icons/eye.svg" alt="password-icon"> </span>
+
+                  <div v-if="$v.account.password.$error" class="error">
+                    <p id="error-password" class="error" v-if="!$v.account.password.required">
+                      Password is required</p>
+                  </div>
+
+                  <div v-if="$v.account.password.$error" class="error">
+                    <p id="error-password" class="error" v-if="!$v.account.password.minLength">
+                      Password should be at least 8 charcters long.</p>
+                  </div>
                 </div>
+
               </div>
               <!-- user password -->
 
@@ -113,7 +152,7 @@
               </button>
               <!-- action button -->
 
-              <p v-if="activeMode">By creating, you agree to Afrinvestor
+              <p v-if="activeMode" class="terms-agreement">By creating, you agree to Afrinvestor
                 <span class="term-of-service">Terms of service</span> and
                 <span class="term-of-service">Privacy policy</span>
               </p>
@@ -121,21 +160,23 @@
           </form>
         </div>
       </div>
-      <!-- sign up Content -->
+      <!-- sign up/ login Content -->
+
+      <!-- Images -->
+      <div class="sticky-image-wrapper">
+        <img src="../assets/images/image2.png" alt="image1" v-if="activeMode">
+        <img src="../assets/images/image1.png" alt="image2" v-if="activeMode == false">
+      </div>
+      <!-- Images -->
     </div>
 
-    <!-- Images -->
-    <div class="sticky-image-wrapper">
-      <img src="../assets/images/image2.png" alt="image1" v-if="activeMode">
-      <img src="../assets/images/image1.png" alt="image2" v-if="activeMode == false">
-    </div>
-    <!-- Images -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import axios from 'axios'
+import { required, minLength, email } from 'vuelidate/lib/validators'
 
 export default {
   data() {
@@ -147,7 +188,7 @@ export default {
         buttonText: 'Create My Free Account',
         loginText: 'Login',
         title: 'Already have an account?',
-        header: 'Gain financial freedom by simply investing',
+        header: `Gain financial freedom by simply investing`,
         activeMode: true,
         username: 'Username',
         account: {
@@ -159,6 +200,31 @@ export default {
         }
       }
     },
+
+       validations: {
+            account: {
+                email: {
+                    required,
+                    email
+                },
+
+                firstname: {
+                    required
+                },
+                lastname: {
+                    required
+                },
+                username: {
+                    required
+                },
+                password: {
+                    required,
+                    minLength: minLength(8)
+                }
+            }
+
+        },
+
     methods: {
       userDashboard() {
         this.$router.push({
@@ -191,93 +257,106 @@ export default {
       },
 
       createAccount() {
-        let loginButton = document.querySelector('.btn-submit');
-        loginButton.innerHTML = `<i class="fa fa-spinner fa-spin fa-2x">`
-        loginButton.disabled = true;
         const { $toast } = this;
+        this.$v.$touch()
+        if (!this.$v.$invalid) {
+          let loginButton = document.querySelector('.btn-submit');
+          loginButton.innerHTML = `<i class="fa fa-spinner fa-spin fa-2x">`
+          loginButton.disabled = true;
+          axios.post("/user/register", JSON.stringify(this.account))
+            .then(response => {
+              if (response.data.status) {
+                this.message = response.data.message
+                $toast.success(this.message, '', {
+                  position: 'topRight',
+                  timeout: 5000
+                })
+                this.toggleLogin()
+                loginButton.innerHTML = 'Login'
+                loginButton.disabled = false;
 
-        axios.post("/user/register", JSON.stringify(this.account))
-          .then(response => {
-            if (response.data.status) {
-              this.message = response.data.message
-              $toast.success(this.message, '', {
-                position: 'topRight',
-                timeout: 5000
-              })
-              this.toggleLogin()
-              loginButton.innerHTML = 'Login'
-              loginButton.disabled = false;
+                localStorage.setItem('userData', JSON.stringify(response.data))
 
-              localStorage.setItem('userData', JSON.stringify(response.data))
+              } else {
+                loginButton.innerHTML = 'Create My Free Account'
+                loginButton.disabled = false;
+                this.message = response.data.message
 
-            } else {
+                $toast.error(error.toString(), '', {
+                  position: 'topRight',
+                  timeout: 5000
+                })
+              }
+            })
+            .catch(error => {
+              this.message = error
               loginButton.innerHTML = 'Create My Free Account'
               loginButton.disabled = false;
-              this.message = response.data.message
 
-              $toast.error(this.message, '', {
+              $toast.error(error.toString(), '', {
                 position: 'topRight',
                 timeout: 5000
               })
-            }
-          })
-          .catch(error => {
-            this.message = error
-            loginButton.innerHTML = 'Create My Free Account'
-            loginButton.disabled = false;
-
-            $toast.error(this.message, '', {
-              position: 'topRight',
-              timeout: 5000
+              // console.error(error)
             })
-            // console.error(error)
-          })
+        }
       },
 
       login() {
-        let loginButton = document.querySelector('.btn-submit');
-        loginButton.innerHTML = `<i class="fa fa-spinner fa-spin fa-2x">`
-        loginButton.disabled = true;
         const { $toast } = this;
         const username = this.account.username
         const password = this.account.password
+        if (this.isRememberMe === true) {
 
-        if(this.isRememberMe === true) {
 
         } else {
-           axios.post("/user/login", JSON.stringify({ username, password }))
-          .then(response => {
-            if (response.data.status) {
-              localStorage.setItem('user-token', JSON.stringify(response.data.data['access_token'])) // store the token in localstorage
+          this.$v.$touch()
+          if (!this.$v.$invalid) {
+            let loginButton = document.querySelector('.btn-submit');
+            loginButton.innerHTML = `<i class="fa fa-spinner fa-spin fa-2x">`
+            loginButton.disabled = true;
+            const username = this.account.username
+            const password = this.account.password
 
-              this.userDashboard()
+            axios.post("/user/login", JSON.stringify({
+                username,
+                password
+              }))
+              .then(response => {
+                if (response.data.status) {
+                  localStorage.setItem('user-token', JSON.stringify(response.data.data[
+                    'access_token'])) // store the token in localstorage
 
-              loginButton.innerHTML = 'Login';
-              loginButton.disabled = false;
+                  this.userDashboard()
 
-            } else {
-              this.message = response.data.message
-              loginButton.innerHTML = 'Login'
-              loginButton.disabled = false;
+                  loginButton.innerHTML = 'Login';
+                  loginButton.disabled = false;
 
-              $toast.error(this.message, '', {
-                position: 'topRight',
-                timeout: 5000
+                } else {
+                  this.message = response.data.message
+                  loginButton.innerHTML = 'Login'
+                  loginButton.disabled = false;
+
+                  $toast.error(this.message, '', {
+                    position: 'topRight',
+                    timeout: 5000
+                  })
+                }
               })
-            }
-          })
-          .catch(error => {
-            loginButton.innerHTML = 'Login'
-            loginButton.disabled = false;
-            this.message = error
-            localStorage.removeItem('user-token') // if the request fails, remove any possible user token if possible
-            $toast.error(this.message, '', {
-              position: 'topRight',
-              timeout: 5000
-            })
-            // console.error(error)
-          })
-
+              .catch(error => {
+                loginButton.innerHTML = 'Login'
+                loginButton.disabled = false;
+                this.message = error
+                localStorage.removeItem(
+                    'user-token'
+                    ) // if the request fails, remove any possible user token if possible
+                $toast.error(this.message, '', {
+                  position: 'topRight',
+                  timeout: 5000
+                })
+                // console.error(error)
+              })
+          }
         }
       },
 
@@ -319,9 +398,9 @@ export default {
     background-clip: padding-box;
     border: 0.0625rem solid #DCD9D9;
     height: 3.125rem;
-    margin-bottom: 2.5rem;
-
   }
+
+
 
   fieldset {
     border: 0;
@@ -368,13 +447,18 @@ export default {
     color: #258C60;
   }
 
-  fieldset p:last-child {
+  /* fieldset p:last-child {
     margin: 0.625rem 0 2.5rem 0;
     text-align: center;
     font-size: 0.875rem;
     color: #0E0E0E;
-  }
-
+  } */
+.terms-agreement {
+  margin: 0.625rem 0 2.5rem 0;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #0E0E0E;
+}
   .page-header {
     margin-bottom: 3.125rem;
   }
@@ -526,7 +610,7 @@ export default {
 
   .toggle-password {
     float: right;
-    margin: -4.5rem 0.625rem 0 -1.5625rem;
+    margin: -2rem 0.625rem 0 -1.5625rem;
     position: relative;
     z-index: 2;
     cursor: pointer;
@@ -540,4 +624,17 @@ export default {
     cursor: pointer;
   }
 
+.form-group.invalid input {
+    border: 0.0625rem solid #EA0005;
+}
+
+ .form-group {
+      margin-bottom: 2.5rem;
+  }
+
+.error {
+    color: #EA0005;
+    font-size: 14px;
+    /* margin-top: 14px; */
+}
 </style>
