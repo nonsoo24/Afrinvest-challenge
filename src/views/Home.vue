@@ -311,8 +311,9 @@ export default {
 
 
         } else {
-          this.$v.$touch()
-          if (this.$v.$invalid) {
+          // debugger
+          // this.$v.$touch()
+          // if (!this.$v.$invalid) {
             let loginButton = document.querySelector('.btn-submit');
             loginButton.innerHTML = `<i class="fa fa-spinner fa-spin fa-2x">`
             loginButton.disabled = true;
@@ -356,7 +357,7 @@ export default {
                 })
                 // console.error(error)
               })
-          }
+         // }
         }
       },
 
