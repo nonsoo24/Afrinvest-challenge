@@ -55,6 +55,21 @@ body {
   border: 0.0625rem solid #979797;
 }
 
+.btn-form {
+    width: 100%;
+    border: 0.0625rem solid #DCD9D9;
+    border-radius: 0.125rem;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1.125rem;
+    letter-spacing: 0;
+    line-height: 1.3125rem;
+    text-align: center;
+    cursor: pointer;
+    color: #258C60;
+    background: #fff;
+  }
+
 .btn-close:hover {
   color: #258C60;
   border: 0.0625rem solid #258C60;
@@ -246,6 +261,10 @@ body {
     padding: 0.6875rem 7rem;
     font-size: 1rem;
   }
+   .btn-form {
+    height: 3.5rem;
+    padding: 0.3125rem 3.125rem;
+  }
 }
 
 
@@ -339,6 +358,11 @@ body {
     padding: 0.6875rem 7rem;
     font-size: 1rem;
   }
+
+   .btn-form {
+    height: 3.5rem;
+    padding: 0.3125rem 3.125rem;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 37.5rem and up) */
@@ -423,6 +447,10 @@ body {
  .btn-view-more {
     padding: 0.6875rem 7rem;
     font-size: 1rem;
+  }
+   .btn-form {
+    height: 2.8125rem;
+    padding: 0.3125rem 3.125rem;
   }
 }
 
@@ -517,6 +545,11 @@ body {
   .btn-view-more {
     padding: 0.6875rem 9rem;
     font-size: 1rem;
+  }
+
+   .btn-form {
+    height: 2.8125rem;
+    padding: 0.3125rem 3.125rem;
   }
 }
 
@@ -633,6 +666,11 @@ body {
     border: 0.0625rem solid #DBDDE1;
     font-size: 20px;
     font-weight: 300;
+  }
+
+  .btn-form {
+    height: 2.8125rem;
+    padding: 0.3125rem 3.125rem;
   }
 }
 

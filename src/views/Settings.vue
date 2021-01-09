@@ -389,7 +389,7 @@ h3 {
 
 .settings__block-navtabs {
   border-bottom: 0.0625rem solid #DBDDE1;
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
 }
 
 .settings__block-navtabs.active {
@@ -460,7 +460,7 @@ img {
 }
 .content-tab.active {
   color: #258C60;
-    border-bottom: 5px solid #258C60;
+    border-bottom: 0.3125rem solid #258C60;
 }
 
 .form-control {

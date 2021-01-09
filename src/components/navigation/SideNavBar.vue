@@ -109,7 +109,7 @@ export default {
 <style>
 
    .sidebar span {
-     font-size: 18px;
+     font-size: 1.125rem;
    }
 
    .sidebar img {
@@ -118,11 +118,11 @@ export default {
    }
 
    .sidebar-text {
-     margin-top: 200px;
+     margin-top: 12.5rem;
    }
 
    .afrinvest-logo {
-     margin: 10px auto;
+     margin: 0.625rem auto;
      cursor: pointer;
    }
 
@@ -141,19 +141,19 @@ export default {
    }
 
    #tell-a-friend {
-     margin-top: 150px;
+     margin-top: 9.375rem;
    }
 
    .sidebar__image-block {
      display: flex;
    }
 
-   @media only screen and (min-width:320px) {
+   @media only screen and (min-width:20rem) {
 
      .sidebar {
        margin: 0;
-       padding: 0 30px;
-       width: 200px;
+       padding: 0 1.875rem;
+       width: 12.5rem;
        background-color: #1F1F1F;
        position: fixed;
        height: 100%;
@@ -164,29 +164,29 @@ export default {
      .sidebar li {
        display: block;
        color: #FFFFFF;
-       padding: 16px 0;
+       padding: 1rem 0;
        text-decoration: none;
        cursor: pointer;
      }
 
      .sidebar-help {
        box-sizing: border-box;
-       padding: 8px 45px;
-       border: 1px solid #258C60;
-       border-radius: 19px;
+       padding: 0.5rem 2.8125rem;
+       border: 0.0625rem solid #258C60;
+       border-radius: 1.1875rem;
        background-color: rgba(37, 140, 96, 0.15);
-       font-size: 12px;
+       font-size: 0.75rem;
        cursor: pointer;
        justify-content: space-between;
      }
 
      .question-icon {
        float: right;
-       margin-left: 0px;
-       margin-top: -28px;
+       margin-left: 0rem;
+       margin-top: -1.75rem;
        position: relative;
        z-index: 2;
-       margin-right: 112px;
+       margin-right: 7rem;
        cursor: pointer;
      }
 
@@ -197,12 +197,12 @@ export default {
 
 
    /* Extra small devices (phones, 600px and down) */
-   @media only screen and (max-width: 600px) {
+   @media only screen and (max-width: 37.5rem) {
 
      .sidebar {
        margin: 0;
-       padding: 0 30px;
-       width: 200px;
+       padding: 0 1.875rem;
+       width: 12.5rem;
        background-color: #1F1F1F;
        position: fixed;
        height: 100%;
@@ -213,33 +213,33 @@ export default {
      .sidebar li {
        display: block;
        color: #FFFFFF;
-       padding: 16px 0;
+       padding: 1rem 0;
        text-decoration: none;
        cursor: pointer;
      }
 
      .afrinvest-logo-image {
-       width: 120px;
+       width: 7.5rem;
      }
 
      .sidebar-help {
        box-sizing: border-box;
-       padding: 8px 45px;
-       border: 1px solid #258C60;
-       border-radius: 19px;
+       padding: 0.5rem 2.8125rem;
+       border: 0.0625rem solid #258C60;
+       border-radius: 1.1875rem;
        background-color: rgba(37, 140, 96, 0.15);
-       font-size: 12px;
+       font-size: 0.75rem;
        cursor: pointer;
        justify-content: space-between;
      }
 
      .question-icon {
        float: right;
-       margin-left: 0px;
-       margin-top: -28px;
+       margin-left: 0rem;
+       margin-top: -1.75rem;
        position: relative;
        z-index: 2;
-       margin-right: 112px;
+       margin-right: 7rem;
        cursor: pointer;
      }
 
@@ -256,12 +256,12 @@ export default {
    }
 
    /* Small devices (portrait tablets and large phones, 600px and up) */
-   @media only screen and (min-width: 600px) {
+   @media only screen and (min-width: 37.5rem) {
 
      .sidebar {
        margin: 0;
-       padding: 0 30px;
-       width: 250px;
+       padding: 0 1.875rem;
+       width: 15.625rem;
        background-color: #1F1F1F;
        position: fixed;
        height: 100%;
@@ -273,29 +273,29 @@ export default {
      .sidebar li {
        display: block;
        color: #FFFFFF;
-       padding: 16px 0;
+       padding: 1rem 0;
        text-decoration: none;
        cursor: pointer;
      }
 
      .sidebar-help {
        box-sizing: border-box;
-       padding: 8px 45px;
-       border: 1px solid #258C60;
-       border-radius: 19px;
+       padding: 0.5rem 2.8125rem;
+       border: 0.0625rem solid #258C60;
+       border-radius: 1.1875rem;
        background-color: rgba(37, 140, 96, 0.15);
-       font-size: 12px;
+       font-size: 0.75rem;
        cursor: pointer;
        justify-content: space-between;
      }
 
      .question-icon {
        float: right;
-       margin-left: 0px;
-       margin-top: -28px;
+       margin-left: 0rem;
+       margin-top: -1.75rem;
        position: relative;
        z-index: 2;
-       margin-right: 112px;
+       margin-right: 7rem;
        cursor: pointer;
      }
 
@@ -312,12 +312,12 @@ export default {
    }
 
    /* Medium devices (landscape tablets, 768px and up) */
-   @media only screen and (min-width: 768px) {
+   @media only screen and (min-width: 48rem) {
 
      .sidebar {
        margin: 0;
-       padding: 0 30px;
-       width: 250px;
+       padding: 0 1.875rem;
+       width: 15.625rem;
        background-color: #1F1F1F;
        position: fixed;
        height: 100%;
@@ -329,29 +329,29 @@ export default {
      .sidebar li {
        display: block;
        color: #FFFFFF;
-       padding: 16px 0;
+       padding: 1rem 0;
        text-decoration: none;
        cursor: pointer;
      }
 
      .sidebar-help {
        box-sizing: border-box;
-       padding: 8px 45px;
-       border: 1px solid #258C60;
-       border-radius: 19px;
+       padding: 0.5rem 2.8125rem;
+       border: 0.0625rem solid #258C60;
+       border-radius: 1.1875rem;
        background-color: rgba(37, 140, 96, 0.15);
-       font-size: 12px;
+       font-size: 0.75rem;
        cursor: pointer;
        justify-content: space-between;
      }
 
      .question-icon {
        float: right;
-       margin-left: 0px;
-       margin-top: -28px;
+       margin-left: 0rem;
+       margin-top: -1.75rem;
        position: relative;
        z-index: 2;
-       margin-right: 112px;
+       margin-right: 7rem;
        cursor: pointer;
      }
 
@@ -368,11 +368,11 @@ export default {
    }
 
    /* Large devices (laptops/desktops, 992px and up) */
-   @media only screen and (min-width: 992px) {
+   @media only screen and (min-width: 62rem) {
      .sidebar {
        margin: 0;
-       padding: 0 30px;
-       width: 250px;
+       padding: 0 1.875rem;
+       width: 15.625rem;
        background-color: #1F1F1F;
        position: fixed;
        height: 100%;
@@ -383,29 +383,29 @@ export default {
      .sidebar li {
        display: block;
        color: #FFFFFF;
-       padding: 16px 0;
+       padding: 1rem 0;
        text-decoration: none;
        cursor: pointer;
      }
 
      .sidebar-help {
        box-sizing: border-box;
-       padding: 8px 45px;
-       border: 1px solid #258C60;
-       border-radius: 19px;
+       padding: 0.5rem 2.8125rem;
+       border: 0.0625rem solid #258C60;
+       border-radius: 1.1875rem;
        background-color: rgba(37, 140, 96, 0.15);
-       font-size: 14px;
+       font-size: 0.875rem;
        cursor: pointer;
        justify-content: space-between;
      }
 
      .question-icon {
        float: right;
-       margin-left: 0px;
-       margin-top: -28px;
+       margin-left: 0rem;
+       margin-top: -1.75rem;
        position: relative;
        z-index: 2;
-       margin-right: 160px;
+       margin-right: 10rem;
        cursor: pointer;
      }
 

@@ -197,8 +197,9 @@ export default {
     return {
       tabs: ['Watchlist', 'Recent Transaction'],
       activeTab: 'Watchlist',
+      isFirstLogin: false,
       firstName: '',
-      isModalOpen: true,
+      isModalOpen: false,
       steps: [{
           target: '#home',
           header: {
@@ -266,6 +267,18 @@ export default {
       this.isModalOpen = false
 
     },
+    checkModal() {
+      const firstLogin = JSON.parse(localStorage.getItem('first-time'));
+      if(firstLogin === null ) {
+         this.isModalOpen = true
+        this.isFirstLogin = true
+         localStorage.setItem('first-time', JSON.stringify(this.isFirstLogin))
+      } else {
+        this.isModalOpen = false
+        this.isFirstLogin = false
+      }
+
+    },
     activateTour() {
       const userToken = JSON.parse(window.localStorage.getItem('user-token'));
       if (userToken !== null) {
@@ -296,6 +309,7 @@ export default {
   mounted() {
     // this.getDashboard()
     this.getUserName()
+    this.checkModal()
   },
 }
 </script>

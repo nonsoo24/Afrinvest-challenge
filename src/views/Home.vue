@@ -303,6 +303,7 @@ export default {
       },
 
       login() {
+        debugger
         const { $toast } = this;
         const username = this.account.username
         const password = this.account.password
@@ -311,7 +312,7 @@ export default {
 
         } else {
           this.$v.$touch()
-          if (!this.$v.$invalid) {
+          if (this.$v.$invalid) {
             let loginButton = document.querySelector('.btn-submit');
             loginButton.innerHTML = `<i class="fa fa-spinner fa-spin fa-2x">`
             loginButton.disabled = true;
@@ -324,8 +325,7 @@ export default {
               }))
               .then(response => {
                 if (response.data.status) {
-                  localStorage.setItem('user-token', JSON.stringify(response.data.data[
-                    'access_token'])) // store the token in localstorage
+                  localStorage.setItem('user-token', JSON.stringify(response.data.data['access_token'])) // store the token in localstorage
 
                   this.userDashboard()
 
@@ -337,7 +337,7 @@ export default {
                   loginButton.innerHTML = 'Login'
                   loginButton.disabled = false;
 
-                  $toast.error(this.message, '', {
+                  $toast.error(error.toString(), '', {
                     position: 'topRight',
                     timeout: 5000
                   })
@@ -383,7 +383,7 @@ export default {
   }
 
   input:focus {
-    border: 1px solid #1F1F1F;
+    border: 0.0625rem solid #1F1F1F;
     outline: none;
   }
 
@@ -399,8 +399,6 @@ export default {
     border: 0.0625rem solid #DCD9D9;
     height: 3.125rem;
   }
-
-
 
   fieldset {
     border: 0;
@@ -424,23 +422,6 @@ export default {
 
   .afrinvest-logo {
     margin: 0.625rem auto;
-  }
-
-  .btn-form {
-    height: 2.8125rem;
-    width: 100%;
-    border: 0.0625rem solid #DCD9D9;
-    border-radius: 0.125rem;
-    box-sizing: border-box;
-    font-family: inherit;
-    font-size: 1.125rem;
-    letter-spacing: 0;
-    line-height: 1.3125rem;
-    text-align: center;
-    cursor: pointer;
-    color: #258C60;
-    background: #fff;
-    padding: 0.3125rem 3.125rem;
   }
 
   .term-of-service {
@@ -480,7 +461,7 @@ export default {
   .btn-submit:hover {
   color: #258C60;
   background-color: #fff;
-  border: 1px solid #258C60;
+  border: 0.0625rem solid #258C60;
 
 }
 
@@ -543,13 +524,13 @@ export default {
     left: 0;
     height: 1.5625rem;
     width: 1.5625rem;
-    border: 1px solid #DCD9D9;
+    border: 0.0625rem solid #DCD9D9;
     background-color: #FFFFFF;
   }
 
   .container:hover input~.checkmark {
     background-color: #fff;
-    border: 1px solid #1F1F1F;
+    border: 0.0625rem solid #1F1F1F;
   }
 
   .container input:checked~.checkmark {
@@ -566,10 +547,10 @@ export default {
     content: "";
     display: block;
     position: absolute;
-    top: 4px;
-    left: 4px;
-    width: 14px;
-    height: 14px;
+    top: 0.25rem;
+    left: 0.25rem;
+    width: 0.875rem;
+    height: 0.875rem;
     background-color: #258C60;
      transform: scale(0.75);
   }
@@ -594,7 +575,7 @@ export default {
   .header__content {
     display: flex;
     justify-content: flex-end;
-    padding-top: 0.625rem;
+    padding: 0.625rem 0 0 1.5625rem;
   }
 
   .header__content-title {
@@ -634,8 +615,8 @@ export default {
 
 .error {
     color: #EA0005;
-    font-size: 14px;
-    margin-top: 10px;
+    font-size: 0.875rem;
+    margin-top: 0.625rem;
 }
 
 .page-header P {
