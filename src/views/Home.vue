@@ -635,6 +635,10 @@ export default {
 .error {
     color: #EA0005;
     font-size: 14px;
-    /* margin-top: 14px; */
+    margin-top: 10px;
+}
+
+.page-header P {
+  text-align: center;
 }
 </style>

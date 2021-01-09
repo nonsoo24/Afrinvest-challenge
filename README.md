@@ -37,6 +37,8 @@ npm run build
 - JavaScript
 - Vue Js
 - Vue-tour
+- Vuelidate
+- Font-awesome
 
 ## Credits
 

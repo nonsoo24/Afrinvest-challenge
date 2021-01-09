@@ -295,7 +295,7 @@ export default {
   },
   mounted() {
     // this.getDashboard()
-    //this.getUserName()
+    this.getUserName()
   },
 }
 </script>

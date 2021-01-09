@@ -8,22 +8,18 @@ import Vuelidate from 'vuelidate'
 import VueIziToast from 'vue-izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-// const token = localStorage.getItem('user-token')
-// if (token) {
-//   axios.defaults.headers.common['Authorization'] = token
-// }
 const userToken = JSON.parse(localStorage.getItem('user-token'));
 // axios.defaults.headers.get['Accepts'] = 'application/json';
 axios.defaults.baseURL = 'https://tranquil-bayou-87162.herokuapp.com';
 // axios.defaults.headers.post['Accepts'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
-// axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.interceptors.request.use((config) => config);
 axios.interceptors.response.use((response) => response);
 
-// const { $toast } = this;
-
+Vue.config.errorHandler = function (err, vm, info) {
+  console.log(`Error: ${err.toString()}\nInfo: ${info}`)
+}
 
 export const eventBus = new Vue({
   methods: {
